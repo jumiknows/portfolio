@@ -49,18 +49,3 @@ Contact & links
 
 ----
 
-Deploy notes
-
-- The site is a Vite React app — it builds into `dist/` and can be published to GitHub Pages or any static hosting.
-
-----
-
-If you'd like, I can prepare a 1-page PDF summary tailored to your team with suggested first 30/60/90-day goals for the role.
-
-## Beginner-friendly animation guide
-
-If you want to tweak the typing animation, easter eggs, blue background effects, or cursor trail without deep coding knowledge, see:
-
-```text
-docs/NO-CODE-ANIMATION-GUIDE.md
-```
