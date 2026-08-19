@@ -34,6 +34,9 @@ const required = [
   ['sound control', 'SOUND ON'],
   ['desktop keyboard hint', '1-5'],
   ['mobile swipe hint', 'swipe between chapters'],
+  ['live Vancouver clock', 'America/Vancouver'],
+  ['contact sheet', 'COPY EMAIL'],
+  ['interactive trajectory', 'Open Work chapter: Production systems'],
 ]
 
 for (const [label, marker] of required) {

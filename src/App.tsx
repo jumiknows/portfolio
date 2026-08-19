@@ -99,6 +99,43 @@ function useUiAudio() {
   return { enabled, play, toggle }
 }
 
+
+function LiveClock() {
+  const [now, setNow] = useState(() => new Date())
+
+  useEffect(() => {
+    const timer = window.setInterval(() => setNow(new Date()), 1000)
+    return () => window.clearInterval(timer)
+  }, [])
+
+  const time = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'America/Vancouver',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+  }).format(now)
+
+  const zone = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'America/Vancouver',
+    timeZoneName: 'short',
+  }).formatToParts(now).find((part) => part.type === 'timeZoneName')?.value ?? 'PT'
+
+  return (
+    <time
+      className="live-clock"
+      dateTime={now.toISOString()}
+      title="Live time in Vancouver, British Columbia"
+      aria-label={`Current time in Vancouver: ${time} ${zone}`}
+    >
+      <span className="live-dot" aria-hidden="true" />
+      <span className="live-city">VANCOUVER</span>
+      <b>{time}</b>
+      <span>{zone}</span>
+    </time>
+  )
+}
+
 function ExternalArrow() {
   return <span aria-hidden="true">↗</span>
 }
@@ -236,15 +273,47 @@ function CleanListenDemo({ clean, setClean, onSound }: { clean: boolean; setClea
   )
 }
 
-function IndexOverlay() {
+function IndexOverlay({ goTo }: { goTo: (chapter: ChapterId) => void }) {
   return (
-    <div className="orbit-labels" aria-hidden="true">
-      <span className="orbit-chip prod">PROD<small>ship it</small></span>
-      <span className="orbit-chip ml">ML<small>clean it</small></span>
-      <span className="orbit-chip orbit">ORBIT<small>ALEASAT</small></span>
-      <span className="orbit-chip people">300+<small>bring people</small></span>
-      <span className="map-caption">CURRENT TRAJECTORY</span>
-      <span className="hand-note">apparently this became a career ↗</span>
+    <div className="orbit-labels" aria-label="Current trajectory. Select a node to open that chapter.">
+      <button
+        type="button"
+        className="orbit-chip prod"
+        onClick={() => goTo('work')}
+        aria-label="Open Work chapter: Production systems"
+        title="Production systems - open Work"
+      >
+        PROD<small>ship it</small>
+      </button>
+      <button
+        type="button"
+        className="orbit-chip ml"
+        onClick={() => goTo('lab')}
+        aria-label="Open Lab chapter: Machine learning"
+        title="Machine learning - open Lab"
+      >
+        ML<small>clean it</small>
+      </button>
+      <button
+        type="button"
+        className="orbit-chip orbit"
+        onClick={() => goTo('space')}
+        aria-label="Open Space chapter: ALEASAT and mission software"
+        title="Orbit - open Space"
+      >
+        ORBIT<small>ALEASAT</small>
+      </button>
+      <button
+        type="button"
+        className="orbit-chip people"
+        onClick={() => goTo('people')}
+        aria-label="Open People chapter: Community and mentoring"
+        title="Community - open People"
+      >
+        300+<small>bring people</small>
+      </button>
+      <span className="map-caption">CURRENT TRAJECTORY · CLICK A NODE</span>
+      <span className="hand-note" aria-hidden="true">apparently this became a career ↗</span>
     </div>
   )
 }
@@ -270,8 +339,8 @@ function PeopleOverlay() {
   )
 }
 
-function VisualOverlay({ chapter, clean, setClean, onSound }: { chapter: ChapterId; clean: boolean; setClean: (value: boolean) => void; onSound: (kind: UiSound) => void }) {
-  if (chapter === 'index') return <IndexOverlay />
+function VisualOverlay({ chapter, clean, setClean, onSound, goTo }: { chapter: ChapterId; clean: boolean; setClean: (value: boolean) => void; onSound: (kind: UiSound) => void; goTo: (chapter: ChapterId) => void }) {
+  if (chapter === 'index') return <IndexOverlay goTo={goTo} />
   if (chapter === 'work') return <ReleaseConsole onSound={onSound} />
   if (chapter === 'lab') return <CleanListenDemo clean={clean} setClean={setClean} onSound={onSound} />
   if (chapter === 'space') return <SpaceOverlay />
@@ -311,6 +380,83 @@ function DetailSheet({ chapter, onClose }: { chapter: ChapterId; onClose: () => 
   )
 }
 
+
+function ContactSheet({
+  onClose,
+  onCopyEmail,
+}: {
+  onClose: () => void
+  onCopyEmail: () => void
+}) {
+  useEffect(() => {
+    const close = (event: KeyboardEvent) => event.key === 'Escape' && onClose()
+    window.addEventListener('keydown', close)
+    return () => window.removeEventListener('keydown', close)
+  }, [onClose])
+
+  return (
+    <motion.div
+      className="sheet-backdrop"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onMouseDown={onClose}
+    >
+      <motion.article
+        className="detail-sheet contact-sheet"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="contact-title"
+        initial={{ y: 34, opacity: 0, rotate: 0.35 }}
+        animate={{ y: 0, opacity: 1, rotate: 0 }}
+        exit={{ y: 24, opacity: 0 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+        onMouseDown={(event) => event.stopPropagation()}
+      >
+        <button className="sheet-close" onClick={onClose} aria-label="Close contact sheet">×</button>
+        <p className="eyebrow">OPEN CHANNEL · VANCOUVER</p>
+        <h2 id="contact-title">Say hello.</h2>
+        <p>
+          The easiest way to reach me is email. If your browser has no mail app configured,
+          copy the address instead.
+        </p>
+
+        <div className="contact-address" aria-label="Email address">
+          <span>ERNEST_WONG@SFU.CA</span>
+          <button type="button" onClick={onCopyEmail}>COPY EMAIL</button>
+        </div>
+
+        <div className="contact-actions">
+          <a className="primary-action" href="mailto:ernest_wong@sfu.ca?subject=Hello%20Ernest">
+            OPEN EMAIL <ExternalArrow />
+          </a>
+          <a
+            className="secondary-action"
+            href="https://www.linkedin.com/in/jumiknows/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            LINKEDIN <ExternalArrow />
+          </a>
+          <a
+            className="secondary-action"
+            href="https://github.com/jumiknows"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GITHUB <ExternalArrow />
+          </a>
+        </div>
+
+        <div className="sheet-footer">
+          <span>Usually replies with too many ideas.</span>
+          <span>close with ESC</span>
+        </div>
+      </motion.article>
+    </motion.div>
+  )
+}
+
 function MobileDock({ active, goTo }: { active: ChapterId; goTo: (chapter: ChapterId) => void }) {
   return (
     <nav className="mobile-dock" aria-label="Portfolio chapters">
@@ -328,6 +474,7 @@ function App() {
   const initialHash = (typeof window !== 'undefined' ? window.location.hash.slice(1) : '') as ChapterId
   const [active, setActive] = useState<ChapterId>(orderedIds.includes(initialHash) ? initialHash : 'index')
   const [detailOpen, setDetailOpen] = useState(false)
+  const [contactOpen, setContactOpen] = useState(false)
   const [clean, setClean] = useState(false)
   const [catPokes, setCatPokes] = useState(0)
   const [toast, setToast] = useState('')
@@ -347,6 +494,7 @@ function App() {
     uiAudio.play('navigate')
     setActive(chapter)
     setDetailOpen(false)
+    setContactOpen(false)
     history.replaceState(null, '', chapter === 'index' ? window.location.pathname : `#${chapter}`)
     if (navigator.vibrate) navigator.vibrate(8)
   }
@@ -368,6 +516,37 @@ function App() {
     setDetailOpen(false)
   }
 
+  const openContact = () => {
+    uiAudio.play('open')
+    setContactOpen(true)
+  }
+
+  const closeContact = () => {
+    uiAudio.play('close')
+    setContactOpen(false)
+  }
+
+  const copyEmail = async () => {
+    uiAudio.play('action')
+    const email = 'ernest_wong@sfu.ca'
+
+    try {
+      await navigator.clipboard.writeText(email)
+    } catch {
+      const textarea = document.createElement('textarea')
+      textarea.value = email
+      textarea.style.position = 'fixed'
+      textarea.style.opacity = '0'
+      document.body.appendChild(textarea)
+      textarea.select()
+      document.execCommand('copy')
+      textarea.remove()
+    }
+
+    setToast('email copied to clipboard')
+    window.setTimeout(() => setToast(''), 1800)
+  }
+
   const move = (direction: -1 | 1) => {
     const next = Math.max(0, Math.min(orderedIds.length - 1, activeIndex + direction))
     if (next !== activeIndex) goTo(orderedIds[next])
@@ -375,7 +554,7 @@ function App() {
 
   useEffect(() => {
     const keyHandler = (event: KeyboardEvent) => {
-      if (detailOpen) return
+      if (detailOpen || contactOpen) return
       if (event.key === 'ArrowLeft') move(-1)
       if (event.key === 'ArrowRight') move(1)
       if (/^[1-5]$/.test(event.key)) goTo(orderedIds[Number(event.key) - 1])
@@ -413,11 +592,11 @@ function App() {
 
       <header className="app-bar">
         <button className="brand" onClick={() => goTo('index')} aria-label="Go to index"><span>EW</span><b>FIELD NOTES</b></button>
-        <div className="coords">VANCOUVER · 49.2827° N · 123.1207° W</div>
+        <LiveClock />
         <div className="top-links">
           <a href="./resume.pdf" target="_blank" rel="noreferrer">RÉSUMÉ</a>
           <a href="https://github.com/jumiknows" target="_blank" rel="noreferrer">GITHUB</a>
-          <a href="mailto:ernest_wong@sfu.ca">SAY HELLO ↗</a>
+          <button className="top-link-button" type="button" onClick={openContact}>SAY HELLO ↗</button>
           <span className="utility-divider" aria-hidden="true" />
           <button className="top-control" type="button" aria-pressed={lightsOn} onClick={toggleLamp} title={lightsOn ? 'Turn the desk lamp off' : 'Turn the desk lamp on'}>
             <span aria-hidden="true">◐</span><b>{lightsOn ? 'LIGHT ON' : 'LIGHT OFF'}</b>
@@ -483,7 +662,7 @@ function App() {
                     exit={{ opacity: 0, scale: 0.98 }}
                     transition={{ duration: prefersReducedMotion ? 0.01 : 0.34 }}
                   >
-                    <VisualOverlay chapter={active} clean={clean} setClean={setClean} onSound={uiAudio.play} />
+                    <VisualOverlay chapter={active} clean={clean} setClean={setClean} onSound={uiAudio.play} goTo={goTo} />
                   </motion.div>
                 </AnimatePresence>
               </div>
@@ -511,6 +690,7 @@ function App() {
       {isMobile && <MobileDock active={active} goTo={goTo} />}
 
       <AnimatePresence>{detailOpen && <DetailSheet chapter={active} onClose={closeDetail} />}</AnimatePresence>
+      <AnimatePresence>{contactOpen && <ContactSheet onClose={closeContact} onCopyEmail={copyEmail} />}</AnimatePresence>
       <AnimatePresence>{toast && <motion.div className="toast" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>{toast}</motion.div>}</AnimatePresence>
       <AnimatePresence>{isMobile && showSwipeHint && <motion.div className="swipe-hint" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><span>←</span> swipe between chapters <span>→</span></motion.div>}</AnimatePresence>
     </div>
