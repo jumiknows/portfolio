@@ -10,11 +10,11 @@ export type ChapterMeta = {
 }
 
 export const chapters: ChapterMeta[] = [
-  { id: 'index', number: '00', label: 'INDEX', short: 'Home', color: '#7a648e', code: '00—INDEX' },
-  { id: 'work', number: '01', label: 'WORK', short: 'Work', color: '#37755b', code: '01—WORK' },
-  { id: 'lab', number: '02', label: 'LAB', short: 'Lab', color: '#b35b4c', code: '02—LAB' },
-  { id: 'space', number: '03', label: 'SPACE', short: 'Space', color: '#4d638b', code: '03—SPACE' },
-  { id: 'people', number: '04', label: 'PEOPLE', short: 'People', color: '#b66f3e', code: '04—PEOPLE' },
+  { id: 'index', number: '00', label: 'INDEX', short: 'Home', color: '#7a648e', code: '00 / INDEX' },
+  { id: 'work', number: '01', label: 'WORK', short: 'Work', color: '#37755b', code: '01 / WORK' },
+  { id: 'lab', number: '02', label: 'LAB', short: 'Lab', color: '#b35b4c', code: '02 / LAB' },
+  { id: 'space', number: '03', label: 'SPACE', short: 'Space', color: '#4d638b', code: '03 / SPACE' },
+  { id: 'people', number: '04', label: 'PEOPLE', short: 'People', color: '#b66f3e', code: '04 / PEOPLE' },
 ]
 
 export const chapterDetails: Record<ChapterId, { title: string; body: string[]; bullets: string[] }> = {
@@ -22,14 +22,14 @@ export const chapterDetails: Record<ChapterId, { title: string; body: string[]; 
     title: 'What this portfolio is trying to prove',
     body: [
       'I like software that has to survive real constraints: production releases, messy data, hardware, mission deadlines, and human coordination.',
-      'This site is intentionally not a chronological résumé. It is a set of technical case files I can defend on a whiteboard.'
+      'Instead of listing everything by date, I grouped the work into case files I can explain on a whiteboard.'
     ],
     bullets: ['$100M+ production platform', '50+ applications automated', '8+ environments compared', '300+ AI community attendees']
   },
   work: {
     title: 'Production engineering case file',
     body: [
-      'At ISED, healthy releases could be validated in roughly 15–30 minutes. The hard releases were the ones where a 404 or 500 could come from application code, configuration, database state, internal services, or environment drift.',
+      'At ISED, healthy releases could be validated in roughly 15 to 30 minutes. The hard releases were the ones where a 404 or 500 could come from application code, configuration, database state, internal services, or environment drift.',
       'I built tooling that turned part of that ambiguity into evidence: compare against known-good environments, surface mismatches, and make daily health checks repeatable.'
     ],
     bullets: ['Java + GraphQL configuration drift tooling', 'Python + Selenium release automation', 'Jenkins health reporting', 'AWS, Salesforce, WebSphere release coordination']
@@ -54,7 +54,7 @@ export const chapterDetails: Record<ChapterId, { title: string; body: string[]; 
     title: 'Community case file',
     body: [
       'The work I remember most is usually attached to people I wanted to keep building with. I have led recurring AI Coffee Chats, spoken to prospective students, tutored computing science, and helped people find communities where they could contribute.',
-      'Technical leadership matters to me when it makes ambitious work easier for other people to join.'
+      'For me, technical leadership means making it easier for other people to contribute and grow.'
     ],
     bullets: ['300+ AI Coffee Chat attendees', '100+ prospective students reached', '200 personalized mentoring emails automated', 'SFU CS Undergraduate Society Award']
   }

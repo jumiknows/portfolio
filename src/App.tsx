@@ -1,5 +1,5 @@
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import type { CSSProperties } from 'react'
 import AmbientScene from './components/AmbientScene'
 import { chapterDetails, chapters, type ChapterId } from './data'
@@ -20,6 +20,85 @@ function useMediaQuery(query: string) {
   return matches
 }
 
+type UiSound = 'navigate' | 'open' | 'close' | 'action' | 'cat'
+
+function playTone(context: AudioContext, kind: UiSound) {
+  const patterns: Record<UiSound, { frequency: number; end: number; duration: number; gain: number }> = {
+    navigate: { frequency: 330, end: 410, duration: 0.055, gain: 0.018 },
+    open: { frequency: 460, end: 610, duration: 0.075, gain: 0.02 },
+    close: { frequency: 390, end: 290, duration: 0.07, gain: 0.018 },
+    action: { frequency: 520, end: 570, duration: 0.045, gain: 0.016 },
+    cat: { frequency: 690, end: 840, duration: 0.08, gain: 0.014 },
+  }
+
+  const { frequency, end, duration, gain } = patterns[kind]
+  const now = context.currentTime
+  const oscillator = context.createOscillator()
+  const volume = context.createGain()
+
+  oscillator.type = 'sine'
+  oscillator.frequency.setValueAtTime(frequency, now)
+  oscillator.frequency.exponentialRampToValueAtTime(end, now + duration)
+  volume.gain.setValueAtTime(0.0001, now)
+  volume.gain.exponentialRampToValueAtTime(gain, now + 0.008)
+  volume.gain.exponentialRampToValueAtTime(0.0001, now + duration)
+
+  oscillator.connect(volume)
+  volume.connect(context.destination)
+  oscillator.start(now)
+  oscillator.stop(now + duration + 0.01)
+}
+
+function useUiAudio() {
+  const [enabled, setEnabled] = useState(() => {
+    if (typeof window === 'undefined') return false
+    return window.localStorage.getItem('ew-sound') === 'on'
+  })
+  const contextRef = useRef<AudioContext | null>(null)
+
+  const getContext = () => {
+    if (typeof window === 'undefined' || !window.AudioContext) return null
+    if (!contextRef.current) contextRef.current = new window.AudioContext()
+    return contextRef.current
+  }
+
+  const play = (kind: UiSound) => {
+    if (!enabled) return
+    const context = getContext()
+    if (!context) return
+    if (context.state === 'suspended') {
+      void context.resume().then(() => playTone(context, kind))
+      return
+    }
+    playTone(context, kind)
+  }
+
+  const toggle = () => {
+    const next = !enabled
+    window.localStorage.setItem('ew-sound', next ? 'on' : 'off')
+
+    const context = getContext()
+    if (enabled && context) playTone(context, 'close')
+    setEnabled(next)
+
+    if (next && context) {
+      if (context.state === 'suspended') {
+        void context.resume().then(() => playTone(context, 'open'))
+      } else {
+        playTone(context, 'open')
+      }
+    }
+  }
+
+  useEffect(() => () => {
+    if (contextRef.current && contextRef.current.state !== 'closed') {
+      void contextRef.current.close()
+    }
+  }, [])
+
+  return { enabled, play, toggle }
+}
+
 function ExternalArrow() {
   return <span aria-hidden="true">↗</span>
 }
@@ -30,7 +109,7 @@ function IndexCopy({ openDetail }: { openDetail: () => void }) {
       <p className="eyebrow"><span className="status-dot" /> SOFTWARE ENGINEER · BUILDER · HUMAN</p>
       <h1 className="hero-name"><span>Ernest</span><em>Wong.</em></h1>
       <p className="hero-thesis">I build systems that <strong>survive contact with reality.</strong></p>
-      <p className="hero-support">Production platforms, automation, applied ML, mission software — and the communities that make ambitious work worth doing.</p>
+      <p className="hero-support">My work spans production systems, automation, applied ML, mission software, and the teams behind them.</p>
       <div className="action-row">
         <button className="primary-action" onClick={openDetail}>open the field note <span>→</span></button>
         <a className="text-action" href="./resume.pdf" target="_blank" rel="noreferrer">resume.pdf <ExternalArrow /></a>
@@ -50,9 +129,9 @@ function WorkCopy({ openDetail }: { openDetail: () => void }) {
     <div className="copy-stack">
       <p className="eyebrow">CASE 01 · PRODUCTION</p>
       <h2>Software with<br /><em>consequences.</em></h2>
-      <p className="chapter-lead">I like the part after the demo — when software meets maintenance windows, broken configs, databases, and actual users.</p>
+      <p className="chapter-lead">I like the part after the demo, when software has to survive maintenance windows, broken configs, databases, and real users.</p>
       <div className="role-block">
-        <div className="role-meta"><span>ISED · GOVERNMENT OF CANADA</span><span>2025—PRESENT</span></div>
+        <div className="role-meta"><span>ISED · GOVERNMENT OF CANADA</span><span>2025 - PRESENT</span></div>
         <h3>Software Engineer Intern</h3>
         <div className="metric-strip three">
           <div><strong>$100M+</strong><span>platform</span></div>
@@ -111,19 +190,19 @@ function PeopleCopy({ openDetail }: { openDetail: () => void }) {
     <div className="copy-stack">
       <p className="eyebrow">CASE 04 · PEOPLE</p>
       <h2>Good systems need<br /><em>humans in the loop.</em></h2>
-      <p className="chapter-lead">The work I remember most is usually attached to people I wanted to keep building with.</p>
+      <p className="chapter-lead">The projects I remember most are the ones where I liked the people enough to keep building with them.</p>
       <div className="metric-strip three">
         <div><strong>300+</strong><span>AI attendees</span></div>
         <div><strong>100+</strong><span>students</span></div>
         <div><strong>200</strong><span>mentoring emails</span></div>
       </div>
-      <blockquote className="people-quote">“Make ambitious work easier for other people to join.”</blockquote>
+      <blockquote className="people-quote">“Bring people with you.”</blockquote>
       <button className="secondary-action" onClick={openDetail}>open the people file <span>↗</span></button>
     </div>
   )
 }
 
-function ReleaseConsole() {
+function ReleaseConsole({ onSound }: { onSound: (kind: UiSound) => void }) {
   const [run, setRun] = useState(0)
   const healthy = ['$ deploy --target prod', '✓ preflight', '✓ database change', '✓ application healthy', '✓ sanity tests', 'release confirmed · 00:22:14']
   const spicy = ['$ deploy --target prod', '✓ preflight', '✕ application · 404', '→ compare known-good UAT', '→ config drift found', '✓ corrected + verified']
@@ -134,13 +213,13 @@ function ReleaseConsole() {
       <div className="console-title"><span>release_simulator.sh</span><span className="console-led" /></div>
       <div className="env-row"><span>QA</span><span>UAT</span><span className="active">PROD</span></div>
       <pre>{lines.join('\n')}</pre>
-      <button className="visual-control" onClick={() => setRun((value) => value + 1)}>{run === 0 ? 'simulate a release' : 'run it again'}</button>
+      <button className="visual-control" onClick={() => { onSound('action'); setRun((value) => value + 1) }}>{run === 0 ? 'simulate a release' : 'run it again'}</button>
       <small>{run > 0 && run % 2 === 0 ? 'evidence > guessing' : 'healthy path / failure path alternate'}</small>
     </div>
   )
 }
 
-function CleanListenDemo({ clean, setClean }: { clean: boolean; setClean: (value: boolean) => void }) {
+function CleanListenDemo({ clean, setClean, onSound }: { clean: boolean; setClean: (value: boolean) => void; onSound: (kind: UiSound) => void }) {
   return (
     <div className={`paper-demo visual-overlay-card ${clean ? 'is-clean' : ''}`}>
       <div className="demo-toolbar"><span>{clean ? 'CLEAN OUTPUT' : 'RAW PDF'}</span><b>{clean ? '3 artifacts removed' : 'noise detected'}</b></div>
@@ -152,7 +231,7 @@ function CleanListenDemo({ clean, setClean }: { clean: boolean; setClean: (value
         <p>The classifier predicts whether each extracted line should be kept for listening.</p>
         <span className="noise-line">© 2026 Example Publisher · Page 7</span>
       </div>
-      <button className="visual-control" aria-pressed={clean} onClick={() => setClean(!clean)}>{clean ? 'show raw PDF' : 'run CleanListen'}</button>
+      <button className="visual-control" aria-pressed={clean} onClick={() => { onSound('action'); setClean(!clean) }}>{clean ? 'show raw PDF' : 'run CleanListen'}</button>
     </div>
   )
 }
@@ -191,10 +270,10 @@ function PeopleOverlay() {
   )
 }
 
-function VisualOverlay({ chapter, clean, setClean }: { chapter: ChapterId; clean: boolean; setClean: (value: boolean) => void }) {
+function VisualOverlay({ chapter, clean, setClean, onSound }: { chapter: ChapterId; clean: boolean; setClean: (value: boolean) => void; onSound: (kind: UiSound) => void }) {
   if (chapter === 'index') return <IndexOverlay />
-  if (chapter === 'work') return <ReleaseConsole />
-  if (chapter === 'lab') return <CleanListenDemo clean={clean} setClean={setClean} />
+  if (chapter === 'work') return <ReleaseConsole onSound={onSound} />
+  if (chapter === 'lab') return <CleanListenDemo clean={clean} setClean={setClean} onSound={onSound} />
   if (chapter === 'space') return <SpaceOverlay />
   return <PeopleOverlay />
 }
@@ -236,7 +315,7 @@ function MobileDock({ active, goTo }: { active: ChapterId; goTo: (chapter: Chapt
   return (
     <nav className="mobile-dock" aria-label="Portfolio chapters">
       {chapters.map((chapter) => (
-        <button key={chapter.id} className={chapter.id === active ? 'active' : ''} onClick={() => goTo(chapter.id)}>
+        <button key={chapter.id} className={chapter.id === active ? 'active' : ''} onClick={() => goTo(chapter.id)} aria-keyshortcuts={String(chapters.indexOf(chapter) + 1)}>
           <span className="dock-number">{chapter.number}</span>
           <span>{chapter.short}</span>
         </button>
@@ -253,6 +332,11 @@ function App() {
   const [catPokes, setCatPokes] = useState(0)
   const [toast, setToast] = useState('')
   const [showSwipeHint, setShowSwipeHint] = useState(true)
+  const [lightsOn, setLightsOn] = useState(() => {
+    if (typeof window === 'undefined') return true
+    return window.localStorage.getItem('ew-lamp') !== 'off'
+  })
+  const uiAudio = useUiAudio()
   const isMobile = useMediaQuery('(max-width: 900px)')
   const prefersReducedMotion = Boolean(useReducedMotion())
   const activeIndex = orderedIds.indexOf(active)
@@ -260,10 +344,28 @@ function App() {
 
   const goTo = (chapter: ChapterId) => {
     if (chapter === active) return
+    uiAudio.play('navigate')
     setActive(chapter)
     setDetailOpen(false)
     history.replaceState(null, '', chapter === 'index' ? window.location.pathname : `#${chapter}`)
     if (navigator.vibrate) navigator.vibrate(8)
+  }
+
+  const toggleLamp = () => {
+    const next = !lightsOn
+    setLightsOn(next)
+    window.localStorage.setItem('ew-lamp', next ? 'on' : 'off')
+    uiAudio.play('action')
+  }
+
+  const openDetail = () => {
+    uiAudio.play('open')
+    setDetailOpen(true)
+  }
+
+  const closeDetail = () => {
+    uiAudio.play('close')
+    setDetailOpen(false)
   }
 
   const move = (direction: -1 | 1) => {
@@ -288,15 +390,15 @@ function App() {
   }, [])
 
   const copy = useMemo(() => {
-    const openDetail = () => setDetailOpen(true)
     if (active === 'index') return <IndexCopy openDetail={openDetail} />
     if (active === 'work') return <WorkCopy openDetail={openDetail} />
     if (active === 'lab') return <LabCopy openDetail={openDetail} />
     if (active === 'space') return <SpaceCopy openDetail={openDetail} />
     return <PeopleCopy openDetail={openDetail} />
-  }, [active])
+  }, [active, uiAudio.enabled])
 
   const pokeCat = () => {
+    uiAudio.play('cat')
     const next = catPokes + 1
     setCatPokes(next)
     const messages = ['meow.exe started', 'incident commander: check the logs', 'please stop poking prod', 'fine. you found the cat. 🐈']
@@ -305,7 +407,7 @@ function App() {
   }
 
   return (
-    <div className={`app-shell chapter-${active}`} style={{ '--chapter-accent': meta.color } as CSSProperties}>
+    <div className={`app-shell chapter-${active} ${lightsOn ? 'lights-on' : 'lights-off'}`} style={{ '--chapter-accent': meta.color } as CSSProperties}>
       <a className="skip-link" href="#chapter-content">Skip to content</a>
       <div className="desk-noise" aria-hidden="true" />
 
@@ -316,6 +418,13 @@ function App() {
           <a href="./resume.pdf" target="_blank" rel="noreferrer">RÉSUMÉ</a>
           <a href="https://github.com/jumiknows" target="_blank" rel="noreferrer">GITHUB</a>
           <a href="mailto:ernest_wong@sfu.ca">SAY HELLO ↗</a>
+          <span className="utility-divider" aria-hidden="true" />
+          <button className="top-control" type="button" aria-pressed={lightsOn} onClick={toggleLamp} title={lightsOn ? 'Turn the desk lamp off' : 'Turn the desk lamp on'}>
+            <span aria-hidden="true">◐</span><b>{lightsOn ? 'LIGHT ON' : 'LIGHT OFF'}</b>
+          </button>
+          <button className="top-control" type="button" aria-pressed={uiAudio.enabled} onClick={uiAudio.toggle} title={uiAudio.enabled ? 'Turn interface sound off' : 'Turn interface sound on'}>
+            <span aria-hidden="true">♪</span><b>{uiAudio.enabled ? 'SOUND ON' : 'SOUND'}</b>
+          </button>
         </div>
       </header>
 
@@ -323,7 +432,7 @@ function App() {
         <div className="dossier-shell">
           <nav className="desktop-tabs" aria-label="Portfolio chapters">
             {chapters.map((chapter) => (
-              <button key={chapter.id} className={chapter.id === active ? 'active' : ''} onClick={() => goTo(chapter.id)}>
+              <button key={chapter.id} className={chapter.id === active ? 'active' : ''} onClick={() => goTo(chapter.id)} aria-keyshortcuts={String(chapters.indexOf(chapter) + 1)}>
                 <span>{chapter.number}</span><b>{chapter.label}</b>
               </button>
             ))}
@@ -374,13 +483,21 @@ function App() {
                     exit={{ opacity: 0, scale: 0.98 }}
                     transition={{ duration: prefersReducedMotion ? 0.01 : 0.34 }}
                   >
-                    <VisualOverlay chapter={active} clean={clean} setClean={setClean} />
+                    <VisualOverlay chapter={active} clean={clean} setClean={setClean} onSound={uiAudio.play} />
                   </motion.div>
                 </AnimatePresence>
               </div>
             </motion.section>
           </div>
         </div>
+
+        {!isMobile && (
+          <div className="keyboard-hint" aria-label="Keyboard shortcuts">
+            <span><kbd>1-5</kbd> jump to a chapter</span>
+            <i aria-hidden="true" />
+            <span><kbd>←</kbd><kbd>→</kbd> switch chapters</span>
+          </div>
+        )}
 
         {isMobile && (
           <div className="mobile-edge-controls" aria-hidden="true">
@@ -393,9 +510,9 @@ function App() {
 
       {isMobile && <MobileDock active={active} goTo={goTo} />}
 
-      <AnimatePresence>{detailOpen && <DetailSheet chapter={active} onClose={() => setDetailOpen(false)} />}</AnimatePresence>
+      <AnimatePresence>{detailOpen && <DetailSheet chapter={active} onClose={closeDetail} />}</AnimatePresence>
       <AnimatePresence>{toast && <motion.div className="toast" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>{toast}</motion.div>}</AnimatePresence>
-      <AnimatePresence>{isMobile && showSwipeHint && <motion.div className="swipe-hint" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><span>←</span> swipe chapters <span>→</span></motion.div>}</AnimatePresence>
+      <AnimatePresence>{isMobile && showSwipeHint && <motion.div className="swipe-hint" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><span>←</span> swipe between chapters <span>→</span></motion.div>}</AnimatePresence>
     </div>
   )
 }

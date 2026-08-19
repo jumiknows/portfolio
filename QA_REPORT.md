@@ -47,3 +47,19 @@ npm run build
 ```
 
 Commit the generated `package-lock.json` after the first successful install. The GitHub Pages workflow uses `npm install` and explicitly disables setup-node package-manager caching, so deployment does not depend on a pre-existing lockfile.
+
+## 3. Final interaction polish checks
+
+The v3.1 polish pass adds an explicit build-time quality gate.
+
+Checked before packaging:
+
+- TypeScript/TSX syntactic transpilation: **PASS**
+- `scripts/quality-check.mjs`: **PASS**
+- visible source contains no em dash or en dash characters: **PASS**
+- desk lamp control present: **PASS**
+- opt-in sound control present: **PASS**
+- desktop `1-5` keyboard hint present: **PASS**
+- mobile swipe hint present: **PASS**
+
+Sound uses the Web Audio API and is off by default, so there is no autoplay prompt and no audio asset to preload.

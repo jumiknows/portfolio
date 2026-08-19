@@ -1,6 +1,6 @@
-# Ernest Wong — Field Notes v3
+# Ernest Wong: Field Notes v3.1
 
-A high-polish portfolio built around one interaction model: a physical engineering dossier with five chapters — Index, Work, Lab, Space, and People.
+A high-polish portfolio built around one interaction model: a physical engineering dossier with five chapters: Index, Work, Lab, Space, and People.
 
 ## Stack
 
@@ -35,6 +35,15 @@ The mobile version is not a shrunken desktop page.
 - Edge arrows provide a discoverable alternative to swiping.
 - A one-time swipe hint appears on first load.
 - Longer technical explanations live in an explicit case-file sheet instead of making the main interface scroll.
+
+
+## Interaction polish
+
+- Desk lamp mode is restored and persists between visits.
+- Interface sound is opt-in and off by default. It uses short Web Audio tones, so there are no audio assets or autoplay requests.
+- Desktop shows a visible `1-5` and arrow-key shortcut hint.
+- Mobile keeps the swipe hint and persistent chapter dock.
+- The build runs a quality check that rejects em dashes and en dashes in visible source, and verifies the key interaction hints are still present.
 
 ## Run locally
 
