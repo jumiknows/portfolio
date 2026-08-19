@@ -1,28 +1,27 @@
-# Ernest Wong — Project Folder Portfolio
+# Ernest Wong — Field Notes
 
-A deliberately tactile, playful portfolio built as a physical project archive rather than a conventional developer landing page.
+A dependency-free personal portfolio built as a physical engineering dossier rather than a generic portfolio template.
 
-## Run locally
-
-No build step or dependencies are required.
+## Local preview
 
 ```bash
-python -m http.server 8000
+python -m http.server 8080
 ```
 
-Then open `http://localhost:8000`.
-
-## Design idea
-
-- Manila project folder instead of a SaaS-style page
-- Tabbed sections behave like file dividers
-- Work appears as case files
-- Projects appear as inspectable artifacts
-- Space work becomes a flight log
-- Community work becomes polaroids
-- Personal details live on a corkboard
-- Small Easter eggs keep it human without hiding the recruiter signal
+Then visit `http://localhost:8080`.
 
 ## Deployment
 
-This repo is static HTML/CSS/JS and can be deployed directly to GitHub Pages, Cloudflare Pages, Netlify, or Vercel without Node/npm.
+The included GitHub Pages workflow publishes the repository as a static site. There is no Node build step and no lockfile requirement.
+
+## Structure
+
+- `index.html` — content and semantics
+- `styles.css` — visual system, responsive layout and motion
+- `app.js` — tab navigation, release simulator, CleanListen demo and small Easter eggs
+- `resume.pdf` — linked résumé
+- `.github/workflows/deploy.yml` — static GitHub Pages deployment
+
+## Sources / external project links
+
+The space section links directly to the official SFU Satellite and ALEASAT sites. Personal impact claims should remain aligned with Ernest's résumé and project history.
