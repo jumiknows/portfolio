@@ -30,19 +30,6 @@ document.addEventListener('keydown', event => {
 
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Cursor: quiet enough to disappear when you stop noticing it.
-const cursor = document.getElementById('cursorDot');
-if (matchMedia('(pointer:fine)').matches) {
-  document.addEventListener('mousemove', e => {
-    cursor.style.left = `${e.clientX}px`;
-    cursor.style.top = `${e.clientY}px`;
-  });
-  document.querySelectorAll('a,button').forEach(el => {
-    el.addEventListener('mouseenter', () => cursor.classList.add('hot'));
-    el.addEventListener('mouseleave', () => cursor.classList.remove('hot'));
-  });
-}
-
 // Release simulator: one healthy path, one "this is why we have logs" path.
 const deployButton = document.getElementById('deployButton');
 const releaseConsole = document.getElementById('releaseConsole');
