@@ -1,51 +1,25 @@
+# Ernest Wong — Workbench Portfolio
 
+A playful file-explorer portfolio built around a simple idea: the visitor should feel like they are browsing Ernest's actual workbench, not scrolling through another resume template.
 
-----
+## Design language
 
-Why this portfolio is worth a quick review
+- desktop/file explorer as the core metaphor
+- folders for work, builds, space, people, and miscellaneous personality
+- paper files, sticky notes, polaroids, terminal snippets, and an orbiting satellite
+- recruiter-friendly content remains one click away
+- no external visual libraries required
+- responsive and reduced-motion friendly
 
-- **Impact-first highlights**: real-world production work (50+ applications supported, 8+ environments monitored, portal impact exceeding $100M, balloon mission to ~30 km).
-- **Strong fit**: platform engineering, SRE, developer tools, mission software, and AI security.
-- **Practical outcomes**: tooling, automation, and dashboards focused on measurable reliability and developer productivity.
-
-----
-
-- Run the site locally to inspect code and interactive demos:
+## Run
 
 ```bash
 npm install
 npm run dev
-# open http://localhost:5173
 ```
 
-- Build for production:
+## Build
 
 ```bash
 npm run build
-npm run preview
 ```
-
-- Where content lives:
-	- `src/data.ts` — edit profile, projects, experience, and links.
-	- `src/App.tsx` — layout, interactive lab, and UI components.
-	- `src/styles.css` — visual theme, animations, and accessibility rules.
-	- `public/resume.pdf` — resume file (replace to update downloadable resume).
-
-----
-
-Easter eggs & demos
-
-- Interactive Lab: includes a small keyboard-controlled mini-game and a terminal-style log to show UI polish.
-- Secrets: type `orbit` in the site or try the classic Konami sequence (↑ ↑ ↓ ↓ ← → ← → B A) to unlock playful visuals.
-
-----
-
-Contact & links
-
-- Email: ernest_wong@sfu.ca
-- LinkedIn: https://linkedin.com/in/jumiknows/
-- GitHub: https://github.com/jumiknows
-- Resume (PDF): available on the site (public/resume.pdf)
-
-----
-
