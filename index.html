@@ -1,14 +1,267 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#aeb8f3" />
-    <meta name="description" content="Ernest Wong — software engineer, builder, and technical community leader." />
-    <title>Ernest Wong — Workbench</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#d4b06a" />
+  <meta name="description" content="Ernest Wong — software engineer, systems builder, aerospace tinkerer, and community organizer." />
+  <title>Ernest Wong — Project Folder</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="desk">
+    <header class="deskbar">
+      <div class="deskbar-left"><span class="status-dot"></span><span>ERNEST_WONG / ARCHIVE</span></div>
+      <div class="deskbar-right"><span id="clock">03:19</span><span>VANCOUVER, BC</span></div>
+    </header>
+
+    <main class="folder-shell" id="folderShell">
+      <aside class="folder-tabs" aria-label="Portfolio sections">
+        <button class="folder-tab active" data-view="cover"><span>01</span>Cover</button>
+        <button class="folder-tab" data-view="work"><span>02</span>Work</button>
+        <button class="folder-tab" data-view="builds"><span>03</span>Builds</button>
+        <button class="folder-tab" data-view="space"><span>04</span>Space</button>
+        <button class="folder-tab" data-view="people"><span>05</span>People</button>
+        <button class="folder-tab" data-view="misc"><span>06</span>Oddments</button>
+      </aside>
+
+      <section class="folder">
+        <div class="folder-lip">
+          <div class="folder-label">EW / PROJECT FILES</div>
+          <div class="folder-code">REF: 2026-08</div>
+        </div>
+
+        <div class="paper-stack" id="paperStack">
+          <section class="sheet active" data-sheet="cover">
+            <div class="paperclip" aria-hidden="true"></div>
+            <div class="cat-peek" id="catPeek" title="pspspsps">⌁</div>
+            <div class="cover-grid">
+              <div class="cover-copy">
+                <p class="eyebrow">HELLO.TXT</p>
+                <h1>Ernest<br><em>Wong.</em></h1>
+                <p class="lead">I build software for messy real-world systems, automate the annoying parts, and tend to collect ambitious people along the way.</p>
+                <div class="cover-links">
+                  <a href="resume.pdf" target="_blank">resume.pdf ↗</a>
+                  <a href="https://github.com/jumiknows" target="_blank" rel="noreferrer">github ↗</a>
+                  <a href="https://linkedin.com/in/jumiknows/" target="_blank" rel="noreferrer">linkedin ↗</a>
+                  <a href="mailto:ernest_wong@sfu.ca">email ↗</a>
+                </div>
+              </div>
+              <div class="cover-artifacts">
+                <article class="note note-yellow rotate-left">
+                  <span class="pin"></span>
+                  <small>WORKING THEORY</small>
+                  <strong>Ownership &gt; titles.<br>People &gt; logos.<br>Shipping &gt; talking.</strong>
+                </article>
+                <article class="index-card rotate-right">
+                  <div class="index-card-rule"></div>
+                  <p>things I keep ending up around:</p>
+                  <ul>
+                    <li>production systems</li>
+                    <li>AI + automation</li>
+                    <li>space hardware</li>
+                    <li>coffee chats</li>
+                  </ul>
+                  <span class="scribble">apparently this is a career →</span>
+                </article>
+              </div>
+            </div>
+
+            <div class="proof-strip">
+              <div><strong>$100M+</strong><span>production platform</span></div>
+              <div><strong>50+</strong><span>apps automated</span></div>
+              <div><strong>8+</strong><span>environments compared</span></div>
+              <div><strong>300+</strong><span>AI coffee-chat attendees</span></div>
+            </div>
+
+            <div class="footer-note">Open a tab. There are fewer buzzwords inside, promise.</div>
+          </section>
+
+          <section class="sheet" data-sheet="work">
+            <div class="sheet-heading">
+              <div><p class="eyebrow">CASE FILE 02</p><h2>Work that had to survive contact with reality.</h2></div>
+              <div class="stamp verified">PROD<br><b>VERIFIED</b></div>
+            </div>
+
+            <div class="case-list">
+              <article class="case-file">
+                <div class="case-spine">01</div>
+                <div class="case-body">
+                  <div class="case-meta"><strong>ISED · Government of Canada</strong><span>JAN 2025 — PRESENT</span></div>
+                  <h3>Software Engineer Intern</h3>
+                  <p>Production releases, platform automation, configuration drift, and the kind of debugging where a 404 can mean six completely different things.</p>
+                  <div class="evidence"><span>$100M+ platform</span><span>8+ environments</span><span>50+ applications</span></div>
+                  <div class="stack">Java · Python · GraphQL · Jenkins · AWS · Selenium</div>
+                </div>
+              </article>
+
+              <article class="case-file accent-blue">
+                <div class="case-spine">02</div>
+                <div class="case-body">
+                  <div class="case-meta"><strong>Elections Canada</strong><span>MAY 2026 — PRESENT</span></div>
+                  <h3>Data Analyst Co-op</h3>
+                  <p>Turning recurring Tableau-generated PDFs and sprawling reporting rules into structured data pipelines people can actually reuse.</p>
+                  <div class="evidence"><span>PDF → CSV</span><span>Power BI-ready</span><span>cross-system validation</span></div>
+                  <div class="stack">Python · SQL · Denodo · Power BI</div>
+                </div>
+              </article>
+
+              <article class="case-file accent-green">
+                <div class="case-spine">03</div>
+                <div class="case-body">
+                  <div class="case-meta"><strong>SFU Satellite Design Team · UBC Orbit</strong><span>SEP 2023 — PRESENT</span></div>
+                  <h3>Mission Operations · Embedded Systems Lead</h3>
+                  <p>Mission software, telemetry, radios, sensors, reviews, and the occasional reminder that zip ties are an aerospace material.</p>
+                  <div class="evidence"><span>~30 km flight</span><span>10+ sensors</span><span>ESA mission</span></div>
+                  <div class="stack">Python · React · AWS · Raspberry Pi</div>
+                </div>
+              </article>
+            </div>
+
+            <div class="margin-scribble">Favourite bug category:<br><b>“works in QA, breaks in PROD.”</b></div>
+          </section>
+
+          <section class="sheet" data-sheet="builds">
+            <div class="sheet-heading">
+              <div><p class="eyebrow">PROJECT DRAWER</p><h2>Things you can inspect, not just hear me describe.</h2></div>
+              <span class="hand-arrow">open the files ↓</span>
+            </div>
+
+            <div class="artifact-grid">
+              <button class="artifact-file featured" data-modal="cleanlisten">
+                <div class="file-tab">ML / ACCESSIBILITY</div>
+                <div class="file-title-row"><div class="doc-icon">ML</div><h3>CleanListen</h3></div>
+                <p>Line-level ML that removes PDF noise for screen readers and text-to-speech without summarizing away the paper.</p>
+                <div class="metric-stickers"><span>91.2% acc.</span><span>89.7% KEEP F1</span><span>94.0% specificity</span></div>
+                <small>click to inspect →</small>
+              </button>
+
+              <a class="artifact-file lavender" href="https://github.com/jumiknows/AleasatV2" target="_blank" rel="noreferrer">
+                <div class="file-tab">MISSION SOFTWARE</div>
+                <div class="file-title-row"><div class="doc-icon">ORB</div><h3>ALEASAT</h3></div>
+                <p>Telemetry visualization and command workflows supporting an ESA mission targeting a 2028 SpaceX launch.</p>
+                <small>open repo ↗</small>
+              </a>
+
+              <a class="artifact-file mint" href="https://github.com/jumiknows/sfusat_website" target="_blank" rel="noreferrer">
+                <div class="file-tab">WEB / COMMUNITY</div>
+                <div class="file-title-row"><div class="doc-icon">WEB</div><h3>SFU SAT Site</h3></div>
+                <p>Migrated outreach sites from Squarespace to React + GitHub Pages, taking hosting from roughly $200/year to $0.</p>
+                <small>open repo ↗</small>
+              </a>
+            </div>
+
+            <div class="taped-note">I would rather have 3 projects I can explain for an hour than 20 repos I forgot existed.</div>
+          </section>
+
+          <section class="sheet space-sheet" data-sheet="space">
+            <div class="sheet-heading light">
+              <div><p class="eyebrow">FLIGHT LOG</p><h2>I did, in fact, send code into the sky.</h2></div>
+              <div class="mission-patch">EW<br><span>SAT</span></div>
+            </div>
+
+            <div class="flight-path">
+              <div class="earth-node"><span>EARTH</span><b>0 km</b></div>
+              <div class="path-line"><i></i></div>
+              <div class="balloon-node"><span>HAB</span><b>~30 km</b></div>
+              <div class="path-line dashed"><i></i></div>
+              <div class="orbit-node"><span>ALEASAT</span><b>2028 target</b></div>
+            </div>
+
+            <div class="mission-grid">
+              <article class="mission-card">
+                <span class="mission-no">MISSION 01</span>
+                <h3>High-altitude balloon</h3>
+                <p>Led PDR, CDR, and FRR through a flight reaching roughly 30 km, integrating 10+ sensors and subsystems around a Raspberry Pi.</p>
+                <div class="mission-footer">Python · GPS · cameras · radios</div>
+              </article>
+              <article class="mission-card">
+                <span class="mission-no">MISSION 02</span>
+                <h3>ALEASAT operations</h3>
+                <p>Built mission-operations interfaces for telemetry and command workflows supporting an ESA mission targeting a 2028 SpaceX launch.</p>
+                <div class="mission-footer">React · AWS · OpenShift</div>
+              </article>
+            </div>
+
+            <div class="space-joke">mission rule #1: test the boring stuff ✦</div>
+          </section>
+
+          <section class="sheet" data-sheet="people">
+            <div class="sheet-heading">
+              <div><p class="eyebrow">PEOPLE FILE</p><h2>The part of engineering I don't want to automate.</h2></div>
+            </div>
+
+            <div class="polaroids">
+              <article class="polaroid p1">
+                <div class="photo number-photo purple"><strong>300+</strong><span>attendees</span></div>
+                <h3>AI Coffee Chats</h3>
+                <p>Started recurring sessions at ISED to make AI less mysterious and more useful.</p>
+              </article>
+              <article class="polaroid p2">
+                <div class="photo number-photo orange"><strong>100+</strong><span>students</span></div>
+                <h3>SFU outreach</h3>
+                <p>Presented to prospective students and helped people picture themselves in computing.</p>
+              </article>
+              <article class="polaroid p3">
+                <div class="photo number-photo green"><strong>200</strong><span>emails</span></div>
+                <h3>Mentorship, automated</h3>
+                <p>Used Python + Selenium to send personalized mentoring outreach in a day.</p>
+              </article>
+            </div>
+
+            <blockquote>“Leave the room more capable than you found it.”</blockquote>
+          </section>
+
+          <section class="sheet" data-sheet="misc">
+            <div class="sheet-heading">
+              <div><p class="eyebrow">ODDMENTS</p><h2>Unsorted. Still important.</h2></div>
+            </div>
+
+            <div class="corkboard">
+              <div class="sticky pink s1"><b>🏴 Glasgow</b><span>Field studies in cybercrime · 2024</span></div>
+              <div class="sticky yellow s2"><b>📻 Amateur radio</b><span>because apparently normal hobbies were unavailable</span></div>
+              <div class="sticky blue s3"><b>🏆 1 of 5</b><span>CS Undergraduate Society Award</span></div>
+              <div class="sticky green s4"><b>☕ recurring theme</b><span>I will turn a technical topic into a coffee chat given enough time.</span></div>
+              <div class="sticky cream s5"><b>currently optimizing for</b><span>ownership · good people · difficult problems</span></div>
+            </div>
+
+            <div class="terminal-card">
+              <div class="terminal-top"><span></span><span></span><span></span><b>ernest@archive</b></div>
+              <pre><code>$ whoami
+builder / teammate / professional debugger of “it works on my machine”
+
+$ status
+still curious █</code></pre>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="desk-footer">
+      <span>Made with too many tabs open.</span>
+      <span>© <span id="year"></span> Ernest Wong</span>
+    </footer>
+  </div>
+
+  <dialog class="project-dialog" id="cleanlistenDialog">
+    <button class="dialog-close" id="dialogClose" aria-label="Close">×</button>
+    <div class="dialog-folder-tab">CLEANLISTEN / CASE STUDY</div>
+    <p class="eyebrow">WHY I BUILT IT</p>
+    <h2>Research PDFs are hostile to listening.</h2>
+    <p>Headers, footers, page numbers, citations, and layout artifacts make screen readers and text-to-speech exhausting. CleanListen learns which extracted lines should stay and which should disappear.</p>
+    <div class="pipeline">
+      <span>PDF</span><i>→</i><span>line extraction</span><i>→</i><span>classifier</span><i>→</i><span>clean text</span>
+    </div>
+    <div class="dialog-metrics">
+      <div><strong>91.2%</strong><span>prototype accuracy</span></div>
+      <div><strong>89.7%</strong><span>KEEP F1</span></div>
+      <div><strong>94.0%</strong><span>specificity</span></div>
+    </div>
+    <a class="dialog-link" href="https://github.com/jumiknows/CleanListen" target="_blank" rel="noreferrer">open CleanListen on GitHub ↗</a>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
 </html>

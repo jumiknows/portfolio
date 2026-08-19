@@ -1,25 +1,28 @@
-# Ernest Wong — Workbench Portfolio
+# Ernest Wong — Project Folder Portfolio
 
-A playful file-explorer portfolio built around a simple idea: the visitor should feel like they are browsing Ernest's actual workbench, not scrolling through another resume template.
+A deliberately tactile, playful portfolio built as a physical project archive rather than a conventional developer landing page.
 
-## Design language
+## Run locally
 
-- desktop/file explorer as the core metaphor
-- folders for work, builds, space, people, and miscellaneous personality
-- paper files, sticky notes, polaroids, terminal snippets, and an orbiting satellite
-- recruiter-friendly content remains one click away
-- no external visual libraries required
-- responsive and reduced-motion friendly
-
-## Run
+No build step or dependencies are required.
 
 ```bash
-npm install
-npm run dev
+python -m http.server 8000
 ```
 
-## Build
+Then open `http://localhost:8000`.
 
-```bash
-npm run build
-```
+## Design idea
+
+- Manila project folder instead of a SaaS-style page
+- Tabbed sections behave like file dividers
+- Work appears as case files
+- Projects appear as inspectable artifacts
+- Space work becomes a flight log
+- Community work becomes polaroids
+- Personal details live on a corkboard
+- Small Easter eggs keep it human without hiding the recruiter signal
+
+## Deployment
+
+This repo is static HTML/CSS/JS and can be deployed directly to GitHub Pages, Cloudflare Pages, Netlify, or Vercel without Node/npm.
