@@ -130,6 +130,7 @@ function LiveClock() {
     >
       <span className="live-dot" aria-hidden="true" />
       <span className="live-city">VANCOUVER</span>
+      <span className="live-coords">49.2827° N · 123.1207° W</span>
       <b>{time}</b>
       <span>{zone}</span>
     </time>

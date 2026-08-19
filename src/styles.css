@@ -1316,3 +1316,259 @@ button:focus-visible, a:focus-visible {
   .contact-address button { width: 100%; }
   .contact-actions > * { width: 100%; }
 }
+
+
+/* v3.3 dark-mode contrast system */
+.app-shell.lights-off {
+  --desk: #171916;
+  --desk-deep: #10120f;
+  --paper: #20231f;
+  --paper-deep: #292d27;
+  --folder: #765727;
+  --folder-deep: #513818;
+  --ink: #f2ecdf;
+  --muted: #b9b0a3;
+  --hairline: rgba(238, 230, 214, .16);
+  --shadow: 0 30px 90px rgba(0, 0, 0, .42);
+
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 20% 10%, rgba(126, 116, 94, .08), transparent 30%),
+    linear-gradient(135deg, #1c1f1b 0%, #111310 100%);
+}
+
+.app-shell.lights-off .app-bar {
+  color: var(--ink);
+  border-bottom-color: rgba(238, 230, 214, .12);
+  background: rgba(22, 25, 21, .8);
+}
+
+.app-shell.lights-off .brand,
+.app-shell.lights-off .top-links a,
+.app-shell.lights-off .top-link-button,
+.app-shell.lights-off .top-control,
+.app-shell.lights-off .live-clock,
+.app-shell.lights-off .live-clock b {
+  color: var(--ink);
+}
+
+.app-shell.lights-off .brand > span,
+.app-shell.lights-off .top-control {
+  border-color: rgba(242, 236, 223, .42);
+}
+
+.live-coords {
+  color: #8b8479;
+  font-size: 8px;
+  letter-spacing: .08em;
+}
+
+.app-shell.lights-off .live-clock {
+  color: #c7bfb1;
+}
+
+.app-shell.lights-off .live-coords {
+  color: #aaa194;
+}
+
+.app-shell.lights-off .folder-frame {
+  background: linear-gradient(145deg, #8b672f, #6d4e22);
+  border-color: rgba(218, 181, 112, .22);
+  box-shadow: var(--shadow), inset 0 1px rgba(255, 255, 255, .06);
+}
+
+.app-shell.lights-off .folder-frame::before {
+  background: linear-gradient(150deg, #936d33, #755222);
+  border-color: rgba(218, 181, 112, .18);
+}
+
+.app-shell.lights-off .folder-label {
+  color: rgba(247, 227, 190, .72);
+}
+
+.app-shell.lights-off .desktop-tabs button {
+  color: #f0e5d1;
+  background: #755426;
+}
+
+.app-shell.lights-off .desktop-tabs button.active {
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.app-shell.lights-off .paper-stage {
+  color: var(--ink);
+  border-color: rgba(238, 230, 214, .13);
+  background: var(--paper);
+  box-shadow: 0 14px 42px rgba(0,0,0,.32), inset 0 0 90px rgba(255,255,255,.015);
+}
+
+.app-shell.lights-off .chapter-copy-panel {
+  border-right-color: rgba(238, 230, 214, .1);
+}
+
+.app-shell.lights-off .eyebrow,
+.app-shell.lights-off .hero-support,
+.app-shell.lights-off .chapter-lead,
+.app-shell.lights-off .role-meta,
+.app-shell.lights-off .metric-strip span,
+.app-shell.lights-off .compact-proof span,
+.app-shell.lights-off .stack-chips span {
+  color: var(--muted);
+}
+
+.app-shell.lights-off .hero-name,
+.app-shell.lights-off .hero-thesis,
+.app-shell.lights-off .copy-stack h2,
+.app-shell.lights-off .role-block h3,
+.app-shell.lights-off .compact-proof strong,
+.app-shell.lights-off .metric-strip strong,
+.app-shell.lights-off .text-action,
+.app-shell.lights-off .case-link,
+.app-shell.lights-off .people-contact-link {
+  color: var(--ink);
+}
+
+.app-shell.lights-off .people-quote {
+  color: #c6bdaf;
+}
+
+.app-shell.lights-off .secondary-action,
+.app-shell.lights-off .link-button {
+  color: var(--ink);
+  border-color: rgba(242, 236, 223, .5);
+}
+
+.app-shell.lights-off .secondary-action:hover,
+.app-shell.lights-off .link-button:hover {
+  background: rgba(255,255,255,.06);
+}
+
+.app-shell.lights-off .metric-strip,
+.app-shell.lights-off .compact-proof {
+  border-color: var(--hairline);
+  background: rgba(255,255,255,.025);
+}
+
+.app-shell.lights-off .stack-chips span {
+  color: #c5bcaf;
+  border-color: rgba(238,230,214,.14);
+  background: rgba(255,255,255,.03);
+}
+
+.app-shell.lights-off .visual-panel {
+  background:
+    radial-gradient(circle at 55% 42%, rgba(150, 138, 112, .08), transparent 36%),
+    linear-gradient(155deg, rgba(40, 43, 37, .62), rgba(25, 28, 24, .52));
+}
+
+.app-shell.lights-off .scene-canvas {
+  border-color: rgba(238,230,214,.08);
+  background: rgba(255,255,255,.015);
+}
+
+.app-shell.lights-off .orbit-chip {
+  color: #f5eddf;
+  border-color: rgba(242,236,223,.42);
+  background: rgba(31, 34, 29, .92);
+  box-shadow: 0 8px 20px rgba(0,0,0,.22);
+}
+
+.app-shell.lights-off .orbit-chip small {
+  color: #bcb4a7;
+}
+
+.app-shell.lights-off .orbit-chip:hover {
+  color: #fff9ee;
+  background: #2b3029;
+}
+
+.app-shell.lights-off .map-caption,
+.app-shell.lights-off .network-label {
+  color: #c1b8aa;
+}
+
+.app-shell.lights-off .hand-note {
+  color: #bba5ca;
+}
+
+.app-shell.lights-off .paper-demo {
+  background: #302f29;
+  border-color: rgba(238,230,214,.18);
+}
+
+.app-shell.lights-off .demo-toolbar {
+  color: #bbb1a2;
+}
+
+.app-shell.lights-off .demo-paper {
+  color: #eee7db;
+  background: #242621;
+  border-color: rgba(238,230,214,.14);
+}
+
+.app-shell.lights-off .detail-sheet {
+  color: var(--ink);
+  background: var(--paper);
+  border-color: rgba(238,230,214,.14);
+}
+
+.app-shell.lights-off .detail-sheet > p:not(.eyebrow) {
+  color: #cec5b8;
+}
+
+.app-shell.lights-off .detail-sheet li,
+.app-shell.lights-off .contact-address {
+  color: var(--ink);
+  border-color: var(--hairline);
+  background: rgba(255,255,255,.035);
+}
+
+.app-shell.lights-off .sheet-close {
+  color: var(--ink);
+  border-color: rgba(238,230,214,.2);
+  background: rgba(32,35,31,.95);
+}
+
+.app-shell.lights-off .contact-address button {
+  color: var(--ink);
+  border-color: rgba(238,230,214,.44);
+}
+
+.app-shell.lights-off .contact-address button:hover {
+  background: rgba(255,255,255,.06);
+}
+
+.app-shell.lights-off .sheet-footer {
+  color: #aba397;
+  border-top-color: var(--hairline);
+}
+
+.app-shell.lights-off .keyboard-hint,
+.app-shell.lights-off .mobile-edge-controls {
+  color: #c5bcad;
+}
+
+.app-shell.lights-off .mobile-dock {
+  color: var(--ink);
+  border-top-color: rgba(238,230,214,.12);
+  background: rgba(23,26,22,.9);
+}
+
+.app-shell.lights-off .mobile-dock button {
+  color: #aaa296;
+}
+
+.app-shell.lights-off .mobile-dock button.active {
+  color: var(--ink);
+}
+
+.app-shell.lights-off .swipe-hint,
+.app-shell.lights-off .toast {
+  color: #f6efe2;
+  background: rgba(22,24,21,.94);
+}
+
+@media (max-width: 1120px) {
+  .live-coords { display: none; }
+}

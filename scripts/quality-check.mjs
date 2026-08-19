@@ -37,10 +37,16 @@ const required = [
   ['live Vancouver clock', 'America/Vancouver'],
   ['contact sheet', 'COPY EMAIL'],
   ['interactive trajectory', 'Open Work chapter: Production systems'],
+  ['Vancouver coordinates', '49.2827° N · 123.1207° W'],
 ]
 
 for (const [label, marker] of required) {
   if (!app.includes(marker)) violations.push(`src/App.tsx: missing ${label}`)
+}
+
+const styles = await readFile('src/styles.css', 'utf8')
+if (!styles.includes('--ink: #f2ecdf')) {
+  violations.push('src/styles.css: missing dark-mode text token')
 }
 
 if (violations.length) {
