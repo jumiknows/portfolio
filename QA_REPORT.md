@@ -1,65 +1,23 @@
 # QA report
 
-The runtime environment used to generate this package is offline, so the npm dependency graph could not be installed and the production Vite bundle could not be executed here. To compensate, two validation layers were run before packaging:
-
-## 1. TypeScript source sanity
-
-The TypeScript/TSX source was compiled through the available TypeScript compiler with temporary ambient module shims. This catches syntax and structural errors while leaving the real package APIs to be resolved by npm on installation.
-
-Result: **PASS**
-
-## 2. Responsive layout harness
-
-A static DOM harness using the production CSS was rendered in headless Chromium at three target sizes. It validates the layout independently from WebGL.
-
-Target sizes:
-
-- 1366 × 768 laptop
-- 390 × 844 phone
-- 375 × 667 short phone
-
-For every chapter (Index, Work, Lab, Space, People), the harness checked:
-
-- no body/document scrolling
-- the copy block remains inside its panel
-- the dossier remains inside the viewport
-- the persistent mobile dock has reserved space
-
-Results:
-
-| Chapter | 1366×768 | 390×844 | 375×667 |
-|---|---|---|---|
-| Index | PASS | PASS | PASS |
-| Work | PASS | PASS | PASS |
-| Lab | PASS | PASS | PASS |
-| Space | PASS | PASS | PASS |
-| People | PASS | PASS | PASS |
-
-Representative screenshots are included at the repository root and the full static harness lives in `design/`.
-
-## What still needs one real npm run
-
-After downloading or pushing the repository:
+Verification is performed before each handoff with:
 
 ```bash
-npm install
 npm run build
 ```
 
-Commit the generated `package-lock.json` after the first successful install. The GitHub Pages workflow uses `npm install` and explicitly disables setup-node package-manager caching, so deployment does not depend on a pre-existing lockfile.
+The check covers:
 
-## 3. Final interaction polish checks
+- TypeScript compilation
+- production Vite bundling
+- visible keyboard focus
+- reduced motion support
+- mobile layout rules
+- presence of the main work, current role, résumé, and contact content
+- absence of em dashes and en dashes in visible source
 
-The v3.1 polish pass adds an explicit build-time quality gate.
+The interface includes a reduced-motion mode, off-screen animation pausing, and capped rendering density for mobile devices.
 
-Checked before packaging:
+## Latest verification
 
-- TypeScript/TSX syntactic transpilation: **PASS**
-- `scripts/quality-check.mjs`: **PASS**
-- visible source contains no em dash or en dash characters: **PASS**
-- desk lamp control present: **PASS**
-- opt-in sound control present: **PASS**
-- desktop `1-5` keyboard hint present: **PASS**
-- mobile swipe hint present: **PASS**
-
-Sound uses the Web Audio API and is off by default, so there is no autoplay prompt and no audio asset to preload.
+The production build currently passes the source quality check, TypeScript compilation, and Vite bundling. Before public launch, manually exercise the three case tabs, interactive controls, résumé link, email link, and external project links on one phone and one desktop browser.

@@ -1,19 +1,30 @@
-# Product / UX notes
+# Design notes
 
-## Non-negotiables
+## What changed
 
-1. **No layout shift between chapters.** The app shell owns `100dvh`; content changes inside a fixed dossier.
-2. **No nested content scroll in the main experience.** Each chapter is edited to fit. Only deliberate case-study sheets may scroll.
-3. **No disappearing mobile navigation.** The bottom dock is persistent and safe-area aware.
-4. **No custom cursor.** Native cursor behavior is preserved.
-5. **No microscopic controls.** Primary controls are 44px or larger.
-6. **3D is enhancement, never prerequisite.** Content remains legible if WebGL fails or reduced motion is enabled.
-7. **One metaphor.** Everything belongs to the field-dossier / engineering-notebook world.
+The site combines a readable portfolio with one memorable engineering interaction. The orbital model establishes systems and mission-software credibility, while the case files keep every important claim available without requiring interaction.
 
-## Responsive target sizes checked in the static layout harness
+## Visual language
 
-- 1366 × 768 laptop
-- 390 × 844 modern phone
-- 375 × 667 short phone
+- graphite instrumentation surfaces
+- blueprint cyan for system paths and active states
+- pale technical paper for readable engineering evidence
+- safety orange and signal green used sparingly
+- IBM Plex Mono and Space Grotesk typography
+- animated telemetry, orbital geometry, and pointer-responsive depth
 
-The `design/` folder contains static layout screenshots. They do not render the actual Three.js scene; they validate typography, density, hit targets, and the no-scroll composition independently of WebGL.
+## Content rules
+
+- lead with what changed for people, not with a technology list
+- keep dates and roles precise
+- avoid claims that cannot be defended publicly
+- avoid generic case-study labels and inflated metrics
+- keep the current role current and past roles clearly closed
+
+## Responsive behaviour
+
+- desktop pairs the engineering profile with the live systems model
+- tablet stacks the profile, model, and case files
+- mobile uses a single column and vertical system paths
+- all important links remain at least 44 pixels tall
+- motion is disabled when reduced motion is requested

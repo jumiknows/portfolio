@@ -1,61 +1,116 @@
-export type ChapterId = 'index' | 'work' | 'lab' | 'space' | 'people'
-
-export type ChapterMeta = {
-  id: ChapterId
-  number: string
+export type Project = {
+  id: 'production' | 'cleanlisten' | 'space'
+  tab: string
   label: string
-  short: string
-  color: string
-  code: string
+  organization: string
+  dates: string
+  title: string
+  intro: string
+  details: string[]
+  proof: Array<{ value: string; label: string }>
+  tools: string[]
+  system: Array<{ label: string; detail: string }>
+  constraint: string
+  ownership: string
+  verification: string
+  links?: Array<{ label: string; href: string }>
 }
 
-export const chapters: ChapterMeta[] = [
-  { id: 'index', number: '00', label: 'INDEX', short: 'Home', color: '#7a648e', code: '00 / INDEX' },
-  { id: 'work', number: '01', label: 'WORK', short: 'Work', color: '#37755b', code: '01 / WORK' },
-  { id: 'lab', number: '02', label: 'LAB', short: 'Lab', color: '#b35b4c', code: '02 / LAB' },
-  { id: 'space', number: '03', label: 'SPACE', short: 'Space', color: '#4d638b', code: '03 / SPACE' },
-  { id: 'people', number: '04', label: 'PEOPLE', short: 'People', color: '#b66f3e', code: '04 / PEOPLE' },
+export const projects: Project[] = [
+  {
+    id: 'production',
+    tab: 'Release day',
+    label: '01 / Production systems',
+    organization: 'ISED, Government of Canada',
+    dates: 'Jan 2025 to Aug 2026',
+    title: 'I made release day less dependent on memory.',
+    intro:
+      'The patent platform spanned more than 50 applications and eight environments. One quiet configuration mismatch could turn a maintenance window into a scavenger hunt.',
+    details: [
+      'Built Java and Python tools that compared environments and turned configuration drift into a report the team could act on.',
+      'Moved repeat checks into Jenkins, then helped application, cloud, database, and Salesforce teams verify production changes.',
+    ],
+    proof: [
+      { value: '8+', label: 'environments compared' },
+      { value: '50+', label: 'applications supported' },
+    ],
+    tools: ['Java', 'Python', 'GraphQL', 'Jenkins', 'AWS'],
+    system: [
+      { label: 'Environment data', detail: 'Application + configuration state' },
+      { label: 'Comparison layer', detail: 'Java, Python + GraphQL' },
+      { label: 'CI gate', detail: 'Jenkins checks + reports' },
+      { label: 'Release review', detail: 'Evidence before production' },
+    ],
+    constraint: 'Configuration drift across 8+ environments',
+    ownership: 'Comparison tooling, automated checks, release verification',
+    verification: 'Reports reviewed across 50+ applications',
+  },
+  {
+    id: 'cleanlisten',
+    tab: 'CleanListen',
+    label: '02 / Applied machine learning',
+    organization: 'Independent project',
+    dates: '2026',
+    title: 'Academic PDFs are awful to listen to. I wanted to fix that.',
+    intro:
+      'Screen readers often read every header, page number, citation, and navigation label before they get back to the research.',
+    details: [
+      'Trained a classifier to keep useful lines and remove page furniture without summarizing or rewriting the paper.',
+      'Wrapped the model in a tested command line workflow so the result could be inspected, repeated, and improved.',
+    ],
+    proof: [
+      { value: '91.2%', label: 'prototype accuracy' },
+      { value: '89.7%', label: 'KEEP F1 score' },
+    ],
+    tools: ['Python', 'scikit-learn', 'Pandas', 'Pytest'],
+    system: [
+      { label: 'PDF lines', detail: 'Raw extracted text' },
+      { label: 'Feature pipeline', detail: 'Text + layout signals' },
+      { label: 'Classifier', detail: 'KEEP or DROP' },
+      { label: 'Listening copy', detail: 'Research preserved' },
+    ],
+    constraint: 'Remove page noise without rewriting the research',
+    ownership: 'Training pipeline, command-line workflow, tests',
+    verification: '91.2% accuracy and 89.7% KEEP F1',
+    links: [{ label: 'View the code', href: 'https://github.com/jumiknows/CleanListen' }],
+  },
+  {
+    id: 'space',
+    tab: '30 km up',
+    label: '03 / Mission software',
+    organization: 'UBC Orbit and SFU SAT',
+    dates: 'Sep 2023 to present',
+    title: 'At 30 km, we could not walk over and restart it.',
+    intro:
+      'That changed how I thought about telemetry, power, error handling, and every assumption hidden inside a diagram.',
+    details: [
+      'Built telemetry and command workflows for ALEASAT, a joint SFU and UBC Earth observation CubeSat supported by ESA Fly Your Satellite!',
+      'Led software for a high altitude balloon, integrating more than ten sensors through design reviews, testing, and flight.',
+    ],
+    proof: [
+      { value: '10+', label: 'sensors integrated' },
+      { value: '~30 km', label: 'balloon altitude' },
+    ],
+    tools: ['Python', 'React', 'Raspberry Pi', 'AWS', 'Radio'],
+    system: [
+      { label: 'Sensors', detail: '10+ flight inputs' },
+      { label: 'Onboard compute', detail: 'Raspberry Pi + Python' },
+      { label: 'Radio link', detail: 'Telemetry + commands' },
+      { label: 'Ground tools', detail: 'React + cloud services' },
+    ],
+    constraint: 'Limited access, power, bandwidth, and recovery',
+    ownership: 'Telemetry, command workflows, sensor integration',
+    verification: 'Design reviews, ground tests, balloon flight near 30 km',
+    links: [
+      { label: 'ALEASAT', href: 'https://www.aleasat.space/' },
+      { label: 'SFU SAT', href: 'https://sfusat.org/' },
+    ],
+  },
 ]
 
-export const chapterDetails: Record<ChapterId, { title: string; body: string[]; bullets: string[] }> = {
-  index: {
-    title: 'What this portfolio is trying to prove',
-    body: [
-      'I like software that has to survive real constraints: production releases, messy data, hardware, mission deadlines, and human coordination.',
-      'Instead of listing everything by date, I grouped the work into case files I can explain on a whiteboard.'
-    ],
-    bullets: ['$100M+ production platform', '50+ applications automated', '8+ environments compared', '300+ AI community attendees']
-  },
-  work: {
-    title: 'Production engineering case file',
-    body: [
-      'At ISED, healthy releases could be validated in roughly 15 to 30 minutes. The hard releases were the ones where a 404 or 500 could come from application code, configuration, database state, internal services, or environment drift.',
-      'I built tooling that turned part of that ambiguity into evidence: compare against known-good environments, surface mismatches, and make daily health checks repeatable.'
-    ],
-    bullets: ['Java + GraphQL configuration drift tooling', 'Python + Selenium release automation', 'Jenkins health reporting', 'AWS, Salesforce, WebSphere release coordination']
-  },
-  lab: {
-    title: 'CleanListen case file',
-    body: [
-      'CleanListen treats noisy academic PDF extraction as a line-level classification problem. The goal is not to summarize the paper, but to preserve research content while removing navigation, headers, references, page furniture, and other TTS-hostile noise.',
-      'The public repository now includes a CLI, grouped benchmarking, tests, CI, and reproducible model metadata.'
-    ],
-    bullets: ['91.2% prototype accuracy', '89.7% KEEP F1', '94.0% specificity', 'Python + scikit-learn + Pandas']
-  },
-  space: {
-    title: 'Mission software case file',
-    body: [
-      'My space work spans mission operations software and embedded systems. I helped build ALEASAT telemetry and command workflows, and led a high-altitude balloon design cycle through PDR, CDR, and FRR.',
-      'The part I like most is that software decisions eventually meet physical reality: radios, sensors, power, altitude, packet loss, and a vehicle you cannot simply restart by walking over to it.'
-    ],
-    bullets: ['ALEASAT mission dashboard', '~30 km high-altitude balloon', '10+ sensors and subsystems', 'React + AWS + OpenShift + Raspberry Pi']
-  },
-  people: {
-    title: 'Community case file',
-    body: [
-      'The work I remember most is usually attached to people I wanted to keep building with. I have led recurring AI Coffee Chats, spoken to prospective students, tutored computing science, and helped people find communities where they could contribute.',
-      'For me, technical leadership means making it easier for other people to contribute and grow.'
-    ],
-    bullets: ['300+ AI Coffee Chat attendees', '100+ prospective students reached', '200 personalized mentoring emails automated', 'SFU CS Undergraduate Society Award']
-  }
-}
+export const skillGroups = [
+  { label: 'Build', value: 'Python, Java, TypeScript, JavaScript, SQL, Bash' },
+  { label: 'Connect', value: 'GraphQL, REST, SOAP, Denodo, Power BI, Pandas' },
+  { label: 'Ship', value: 'AWS, Docker, Kubernetes, OpenShift, Jenkins, Bamboo' },
+  { label: 'Check', value: 'Pytest, JUnit, Selenium, Cypress, Postman' },
+]

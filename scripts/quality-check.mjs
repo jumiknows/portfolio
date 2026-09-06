@@ -22,31 +22,36 @@ const files = (await Promise.all(roots.map(collect))).flat()
 const violations = []
 
 for (const file of files) {
-  const text = await readFile(file, 'utf8')
+  const source = await readFile(file, 'utf8')
   for (const item of forbidden) {
-    if (text.includes(item.char)) violations.push(`${file}: contains ${item.name}`)
+    if (source.includes(item.char)) violations.push(`${file}: contains ${item.name}`)
   }
 }
 
 const app = await readFile('src/App.tsx', 'utf8')
-const required = [
-  ['desk lamp control', 'LIGHT ON'],
-  ['sound control', 'SOUND ON'],
-  ['desktop keyboard hint', '1-5'],
-  ['mobile swipe hint', 'swipe between chapters'],
-  ['live Vancouver clock', 'America/Vancouver'],
-  ['contact sheet', 'COPY EMAIL'],
-  ['interactive trajectory', 'Open Work chapter: Production systems'],
-  ['Vancouver coordinates', '49.2827° N · 123.1207° W'],
+const requiredAppMarkers = [
+  ['skip link', 'Skip to content'],
+  ['portfolio work section', 'Engineering case files'],
+  ['current role', 'Elections Canada'],
+  ['CleanListen interaction', 'Clean this page'],
+  ['contact email', 'ernest_wong@sfu.ca'],
+  ['resume link', './resume.pdf'],
 ]
 
-for (const [label, marker] of required) {
+for (const [label, marker] of requiredAppMarkers) {
   if (!app.includes(marker)) violations.push(`src/App.tsx: missing ${label}`)
 }
 
 const styles = await readFile('src/styles.css', 'utf8')
-if (!styles.includes('--ink: #f2ecdf')) {
-  violations.push('src/styles.css: missing dark-mode text token')
+const requiredStyleMarkers = [
+  ['responsive mobile layout', '@media (max-width: 700px)'],
+  ['reduced motion support', 'prefers-reduced-motion'],
+  ['visible keyboard focus', ':focus-visible'],
+  ['high tech cyan palette', '--electric: #5dd8e8'],
+]
+
+for (const [label, marker] of requiredStyleMarkers) {
+  if (!styles.includes(marker)) violations.push(`src/styles.css: missing ${label}`)
 }
 
 if (violations.length) {
