@@ -34,6 +34,7 @@ const requiredAppMarkers = [
   ['portfolio work section', 'Engineering case files'],
   ['current role', 'Elections Canada'],
   ['CleanListen interaction', 'Clean this page'],
+  ['keyboard friendly project tabs', "event.key === 'ArrowRight'"],
   ['contact email', 'ernest_wong@sfu.ca'],
   ['resume link', './resume.pdf'],
 ]

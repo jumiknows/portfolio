@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { projects, skillGroups, type Project } from './data'
 import MissionSystems from './MissionSystems'
 
@@ -104,7 +104,14 @@ function ArchitectureMap({ project }: { project: Project }) {
 function Workbench() {
   const [activeId, setActiveId] = useState<Project['id']>('production')
   const [qaNote, setQaNote] = useState(false)
+  const tabRefs = useRef<Partial<Record<Project['id'], HTMLButtonElement | null>>>({})
   const activeProject = projects.find((project) => project.id === activeId) ?? projects[0]
+
+  const moveTabFocus = (nextIndex: number) => {
+    const nextProject = projects[nextIndex]
+    setActiveId(nextProject.id)
+    requestAnimationFrame(() => tabRefs.current[nextProject.id]?.focus())
+  }
 
   return (
     <section className="workbench" id="work" aria-labelledby="workbench-title">
@@ -134,12 +141,31 @@ function Workbench() {
         {projects.map((project) => (
           <button
             key={project.id}
+            ref={(element) => { tabRefs.current[project.id] = element }}
+            id={`project-tab-${project.id}`}
             type="button"
             role="tab"
             aria-selected={project.id === activeId}
             aria-controls="active-case"
+            tabIndex={project.id === activeId ? 0 : -1}
             className={project.id === activeId ? 'is-active' : ''}
             onClick={() => setActiveId(project.id)}
+            onKeyDown={(event) => {
+              const currentIndex = projects.findIndex((item) => item.id === project.id)
+              if (event.key === 'ArrowRight') {
+                event.preventDefault()
+                moveTabFocus((currentIndex + 1) % projects.length)
+              } else if (event.key === 'ArrowLeft') {
+                event.preventDefault()
+                moveTabFocus((currentIndex - 1 + projects.length) % projects.length)
+              } else if (event.key === 'Home') {
+                event.preventDefault()
+                moveTabFocus(0)
+              } else if (event.key === 'End') {
+                event.preventDefault()
+                moveTabFocus(projects.length - 1)
+              }
+            }}
           >
             <span>{project.label.slice(0, 2)}</span>
             <b>{project.tab}</b>
@@ -147,7 +173,13 @@ function Workbench() {
         ))}
       </div>
 
-      <article className={`case-sheet case-${activeProject.id}`} id="active-case" role="tabpanel" key={activeProject.id}>
+      <article
+        className={`case-sheet case-${activeProject.id}`}
+        id="active-case"
+        role="tabpanel"
+        aria-labelledby={`project-tab-${activeProject.id}`}
+        key={activeProject.id}
+      >
         <div className="case-copy">
           <p className="case-label">{activeProject.label}</p>
           <div className="case-meta"><b>{activeProject.organization}</b><span>{activeProject.dates}</span></div>

@@ -1689,6 +1689,19 @@ button:focus-visible {
     font-size: clamp(68px, 7.3vw, 92px);
   }
 
+  .eyebrow {
+    font-size: 12px;
+  }
+
+  .engineering-index span {
+    font-size: 11px;
+  }
+
+  .current-note p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
   .workbench {
     min-height: 750px;
   }
@@ -3349,24 +3362,32 @@ body {
    Keeps the interface composed on wide Windows displays and at 125% scaling. */
 @media (min-width: 1051px) {
   .site-header {
-    padding-inline: max(24px, calc((100vw - 1380px) / 2));
+    height: 72px;
+    padding-inline: max(24px, calc((100vw - 1320px) / 2));
+  }
+
+  .site-header nav a {
+    font-size: 13px;
   }
 
   .hero {
-    width: min(1380px, 100%);
+    width: min(1320px, calc(100% - 48px));
     min-height: auto;
-    padding: clamp(42px, 4vw, 64px) 24px clamp(58px, 5vw, 78px);
+    padding: clamp(42px, 4vw, 60px) 0 clamp(58px, 5vw, 76px);
     grid-template-columns: minmax(330px, 0.72fr) minmax(0, 1.28fr);
     gap: clamp(32px, 3vw, 46px);
+    align-items: stretch;
   }
 
   .intro-card {
+    min-width: 0;
+    margin-top: 0;
     padding: clamp(28px, 2.35vw, 36px);
   }
 
   .intro-card h1 {
     margin-top: 32px;
-    font-size: clamp(62px, 4.7vw, 82px);
+    font-size: clamp(60px, 4.5vw, 78px);
   }
 
   .hero-lead {
@@ -3376,11 +3397,13 @@ body {
 
   .hero-note {
     margin-top: 22px;
+    font-size: 15px;
+    line-height: 1.55;
   }
 
   .mission-visual {
-    height: clamp(560px, calc(100vh - 170px), 680px);
-    min-height: 560px;
+    height: auto;
+    min-height: 610px;
   }
 
   .mission-caption {
@@ -3393,7 +3416,7 @@ body {
   .recognition-section,
   .skills-section,
   .contact-section {
-    width: min(1380px, calc(100% - 48px));
+    width: min(1320px, calc(100% - 48px));
   }
 
   .workbench {
@@ -3401,7 +3424,22 @@ body {
   }
 
   .bench-toolbar {
-    min-height: 62px;
+    min-height: 64px;
+    padding: 14px 20px;
+    align-items: center;
+  }
+
+  .bench-toolbar strong {
+    font-size: 13px;
+  }
+
+  .bench-toolbar small,
+  .bench-status {
+    font-size: 12px;
+  }
+
+  .project-tabs {
+    margin: 16px 20px 0;
   }
 
   .project-tabs button,
@@ -3410,24 +3448,65 @@ body {
   .project-tabs button:nth-child(3),
   .project-tabs button:hover,
   .project-tabs button.is-active {
-    min-height: 58px;
+    min-height: 62px;
+  }
+
+  .project-tabs button span {
+    font-size: 12px;
+  }
+
+  .project-tabs button b {
+    font-size: 13px;
   }
 
   .case-sheet,
   .case-cleanlisten,
   .case-space {
-    min-height: 640px;
-    padding: clamp(27px, 2.2vw, 34px);
+    min-height: 620px;
+    margin: 0 20px 20px;
+    padding: clamp(28px, 2.2vw, 34px);
     grid-template-columns: minmax(0, 0.96fr) minmax(0, 1.04fr);
     gap: clamp(28px, 2.5vw, 38px);
+    align-items: start;
+  }
+
+  .case-label {
+    font-size: 12px;
+  }
+
+  .case-meta {
+    font-size: 12px;
   }
 
   .case-copy h2 {
-    font-size: clamp(34px, 2.45vw, 42px);
+    font-size: clamp(34px, 2.35vw, 40px);
+    line-height: 1.08;
   }
 
   .case-intro {
     font-size: clamp(16px, 1vw, 18px);
+    line-height: 1.5;
+  }
+
+  .engineering-summary div {
+    grid-template-columns: 104px minmax(0, 1fr);
+  }
+
+  .engineering-summary dt {
+    font-size: 11px;
+  }
+
+  .engineering-summary dd {
+    font-size: 14px;
+  }
+
+  .case-copy li {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .case-side {
+    gap: 16px;
   }
 
   .system-flow {
@@ -3435,8 +3514,26 @@ body {
     padding-block: 15px;
   }
 
+  .architecture-header span {
+    font-size: 11px;
+  }
+
+  .architecture-header small,
+  .system-node > span,
+  .system-node small {
+    font-size: 11px;
+  }
+
+  .system-node b {
+    font-size: 13px;
+  }
+
   .proof-strip > div {
     min-height: 70px;
+  }
+
+  .proof-strip span {
+    font-size: 11px;
   }
 
   .toy {
@@ -3455,6 +3552,10 @@ body {
     min-height: 78px;
   }
 
+  .tool-tape {
+    font-size: 12px;
+  }
+
   .about-section,
   .recognition-section,
   .skills-section {
@@ -3462,10 +3563,15 @@ body {
     gap: clamp(42px, 5vw, 72px);
   }
 
+  .about-section {
+    margin-top: clamp(54px, 5vw, 76px);
+  }
+
   .about-heading h2,
   .recognition-section h2,
   .skills-title h2 {
-    font-size: clamp(42px, 4.2vw, 64px);
+    font-size: clamp(40px, 3.8vw, 58px);
+    line-height: 1;
   }
 
   .recognition-section,
@@ -3496,7 +3602,8 @@ body {
     grid-area: heading;
     max-width: 720px;
     margin: 0;
-    font-size: clamp(60px, 5.6vw, 88px);
+    font-size: clamp(56px, 5vw, 76px);
+    line-height: 0.98;
   }
 
   .contact-section > p:not(.section-number) {
@@ -3517,12 +3624,25 @@ body {
     margin-top: 4px;
   }
 
+  .contact-links a {
+    font-size: 13px;
+  }
+
   .contact-section footer {
     grid-area: footer;
     margin-top: 34px;
+    font-size: 12px;
   }
 
   .contact-section::after {
-    font-size: clamp(88px, 12vw, 180px);
+    font-size: clamp(80px, 10vw, 150px);
+  }
+}
+
+@media (min-width: 1051px) and (max-width: 1180px) {
+  .case-sheet,
+  .case-cleanlisten,
+  .case-space {
+    grid-template-columns: 1fr;
   }
 }
