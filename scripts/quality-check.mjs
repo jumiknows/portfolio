@@ -45,6 +45,7 @@ for (const [label, marker] of requiredAppMarkers) {
 const styles = await readFile('src/styles.css', 'utf8')
 const requiredStyleMarkers = [
   ['responsive mobile layout', '@media (max-width: 700px)'],
+  ['desktop density guard', '@media (min-width: 1051px)'],
   ['reduced motion support', 'prefers-reduced-motion'],
   ['visible keyboard focus', ':focus-visible'],
   ['high tech cyan palette', '--electric: #5dd8e8'],
