@@ -19,41 +19,89 @@ async function collect(path) {
 }
 
 const files = (await Promise.all(roots.map(collect))).flat()
+const sourceByFile = new Map(
+  await Promise.all(files.map(async (file) => [file, await readFile(file, 'utf8')])),
+)
 const violations = []
 
-for (const file of files) {
-  const source = await readFile(file, 'utf8')
+for (const [file, source] of sourceByFile) {
   for (const item of forbidden) {
     if (source.includes(item.char)) violations.push(`${file}: contains ${item.name}`)
   }
 }
 
-const app = await readFile('src/App.tsx', 'utf8')
-const requiredAppMarkers = [
+const componentSource = [...sourceByFile]
+  .filter(([file]) => ['.ts', '.tsx'].includes(extname(file)))
+  .map(([, source]) => source)
+  .join('\n')
+
+const cssSource = [...sourceByFile]
+  .filter(([file]) => extname(file) === '.css')
+  .map(([, source]) => source)
+  .join('\n')
+
+const requiredComponentMarkers = [
   ['skip link', 'Skip to content'],
   ['portfolio work section', 'Engineering case files'],
   ['current role', 'Elections Canada'],
   ['CleanListen interaction', 'Clean this page'],
-  ['keyboard friendly project tabs', "event.key === 'ArrowRight'"],
+  ['keyboard friendly project tabs', 'ArrowRight:'],
   ['contact email', 'ernest_wong@sfu.ca'],
   ['resume link', './resume.pdf'],
 ]
 
-for (const [label, marker] of requiredAppMarkers) {
-  if (!app.includes(marker)) violations.push(`src/App.tsx: missing ${label}`)
+for (const [label, marker] of requiredComponentMarkers) {
+  if (!componentSource.includes(marker)) violations.push(`src: missing ${label}`)
 }
 
-const styles = await readFile('src/styles.css', 'utf8')
 const requiredStyleMarkers = [
-  ['responsive mobile layout', '@media (max-width: 700px)'],
-  ['desktop density guard', '@media (min-width: 1051px)'],
+  ['responsive mobile layout', '@media (max-width: 47.5rem)'],
+  ['compact desktop layout', '@media (max-width: 65.625rem)'],
   ['reduced motion support', 'prefers-reduced-motion'],
   ['visible keyboard focus', ':focus-visible'],
-  ['high tech cyan palette', '--electric: #5dd8e8'],
+  ['high tech cyan palette', '--color-cyan: #5dd8e8'],
 ]
 
 for (const [label, marker] of requiredStyleMarkers) {
-  if (!styles.includes(marker)) violations.push(`src/styles.css: missing ${label}`)
+  if (!cssSource.includes(marker)) violations.push(`src/styles: missing ${label}`)
+}
+
+const styleEntry = sourceByFile.get('src/styles.css') ?? ''
+const requiredStyleModules = [
+  'tokens.css',
+  'header-hero.css',
+  'mission.css',
+  'workbench.css',
+  'sections.css',
+  'responsive.css',
+]
+
+for (const moduleName of requiredStyleModules) {
+  if (!styleEntry.includes(moduleName)) {
+    violations.push(`src/styles.css: missing ${moduleName} import`)
+  }
+}
+
+for (const [file, source] of sourceByFile) {
+  const lineCount = source.split('\n').length
+
+  if (file.endsWith('.tsx') && lineCount > 350) {
+    violations.push(`${file}: exceeds the 350-line component limit`)
+  }
+
+  if (file.endsWith('.css') && file !== 'src/styles.css' && lineCount > 900) {
+    violations.push(`${file}: exceeds the 900-line style module limit`)
+  }
+
+  if (file.endsWith('.css') && file !== 'src/styles/responsive.css' && source.includes('@media')) {
+    violations.push(`${file}: responsive rules belong in src/styles/responsive.css`)
+  }
+}
+
+const legacyCascadeLabels = ['Systems lab theme', 'Engineering dossier', 'Desktop density guard']
+
+for (const label of legacyCascadeLabels) {
+  if (cssSource.includes(label)) violations.push(`src/styles: contains legacy cascade layer "${label}"`)
 }
 
 if (violations.length) {

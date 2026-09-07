@@ -1,5 +1,12 @@
-export type Project = {
-  id: 'production' | 'cleanlisten' | 'space'
+export type ProjectId = 'production' | 'cleanlisten' | 'space'
+
+export interface Link {
+  label: string
+  href: string
+}
+
+export interface Project {
+  id: ProjectId
   tab: string
   label: string
   organization: string
@@ -13,8 +20,28 @@ export type Project = {
   constraint: string
   ownership: string
   verification: string
-  links?: Array<{ label: string; href: string }>
+  links?: Link[]
 }
+
+export const links = {
+  email: 'mailto:ernest_wong@sfu.ca',
+  github: 'https://github.com/jumiknows',
+  linkedin: 'https://www.linkedin.com/in/jumiknows/',
+  resume: './resume.pdf',
+} as const
+
+export const profile = {
+  eyebrow: 'Software engineer / systems + data + flight',
+  lead: 'I engineer software where code meets operations: production systems, data pipelines, and hardware in the field.',
+  note: 'My best days usually end with a script, a checklist, and fewer people wondering what happens next.',
+  current: 'Building reusable data products at Elections Canada and finishing Computer Science at SFU.',
+  focusAreas: [
+    'Production systems',
+    'Data + applied ML',
+    'Embedded + mission',
+    'Verification + delivery',
+  ],
+} as const
 
 export const projects: Project[] = [
   {
@@ -108,9 +135,36 @@ export const projects: Project[] = [
   },
 ]
 
+export const about = {
+  heading: 'I have a habit of asking,',
+  emphasis: '“why are we doing this by hand?”',
+  paragraphs: [
+    'That question has followed me through government systems, student teams, research projects, and classrooms. It usually leads to a small tool. More importantly, it leads to a better conversation with the people doing the work.',
+    'I also like teaching. I have hosted AI Coffee Chats for more than 300 attendees, tutored computing science at SFU, and taught twenty middle school students how to build with code.',
+  ],
+  principles: [
+    'Ask the awkward question',
+    'Write down what worked',
+    'Test the boring case',
+    'Bring people with you',
+  ],
+} as const
+
+export const recognitions = [
+  { title: 'CS Undergraduate Society Award', detail: 'One of five recipients' },
+  { title: 'AI Hackathon Finalist', detail: 'Best Use of Google Gemini' },
+  { title: 'Mayor of Richmond Recognition Award', detail: 'Community recognition' },
+] as const
+
 export const skillGroups = [
   { label: 'Build', value: 'Python, Java, TypeScript, JavaScript, SQL, Bash' },
   { label: 'Connect', value: 'GraphQL, REST, SOAP, Denodo, Power BI, Pandas' },
   { label: 'Ship', value: 'AWS, Docker, Kubernetes, OpenShift, Jenkins, Bamboo' },
   { label: 'Check', value: 'Pytest, JUnit, Selenium, Cypress, Postman' },
-]
+] as const
+
+export const contact = {
+  heading: 'Want to compare notes?',
+  description: 'Tell me what you are building, what keeps breaking, or what you wish worked better.',
+  coordinates: '49.2827° N / 123.1207° W',
+} as const

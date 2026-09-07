@@ -1,0 +1,146 @@
+:root {
+  color-scheme: dark;
+
+  /* Brand palette */
+  --color-page: #05090d;
+  --color-surface: #071016;
+  --color-surface-raised: #0a1319;
+  --color-paper: #e7edef;
+  --color-paper-ink: #09151b;
+  --color-text: #f0f5f7;
+  --color-muted: #91a0a9;
+  --color-cyan: #5dd8e8;
+  --color-cyan-deep: #087b90;
+  --color-orange: #ff9b54;
+  --color-green: #66e0ae;
+  --color-lime: #d7ff64;
+
+  /* Interface lines */
+  --line-dark: #304550;
+  --line-dark-strong: #354b56;
+  --line-paper: #84979f;
+
+  /* Typography */
+  --font-sans: "Space Grotesk", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+
+  /* Layout */
+  --content-max: 82.5rem;
+  --desktop-gutter: 1.5rem;
+  --section-gap: clamp(3.375rem, 5vw, 4.75rem);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.25rem;
+  background: var(--color-page);
+}
+
+body {
+  min-width: 20rem;
+  margin: 0;
+  overflow-x: hidden;
+  background:
+    linear-gradient(rgba(93, 216, 232, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(93, 216, 232, 0.028) 1px, transparent 1px),
+    radial-gradient(circle at 70% 8%, rgba(35, 158, 179, 0.1), transparent 31rem),
+    var(--color-page);
+  background-size: 2.5rem 2.5rem, 2.5rem 2.5rem, auto, auto;
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+a {
+  color: inherit;
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 0.25rem solid var(--color-lime);
+  outline-offset: 0.25rem;
+}
+
+::selection {
+  background: var(--color-lime);
+  color: var(--color-page);
+}
+
+.site-shell {
+  min-height: 100vh;
+}
+
+#work,
+#about,
+#contact {
+  scroll-margin-top: 5.5rem;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 300;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.6875rem 0.9375rem;
+  transform: translateY(-160%);
+  border: 0.125rem solid var(--color-text);
+  background: var(--color-surface-raised);
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+@keyframes case-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bubble-in {
+  from {
+    opacity: 0;
+    transform: translate(0.5rem, 0.3125rem) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes system-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

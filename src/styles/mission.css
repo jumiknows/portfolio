@@ -1,0 +1,223 @@
+.mission-visual {
+  position: relative;
+  min-width: 0;
+  min-height: 35rem;
+  overflow: hidden;
+  border: 1px solid #39515d;
+  border-top: 0.1875rem solid var(--color-cyan);
+  background:
+    radial-gradient(circle at 54% 47%, rgba(25, 94, 111, 0.18), transparent 37%),
+    linear-gradient(rgba(93, 216, 232, 0.034) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(93, 216, 232, 0.034) 1px, transparent 1px),
+    #040a0e;
+  background-size: auto, 1.5rem 1.5rem, 1.5rem 1.5rem, auto;
+  box-shadow: 0 2.1875rem 6.25rem rgba(0, 0, 0, 0.48);
+  isolation: isolate;
+}
+
+.mission-visual::before,
+.mission-visual::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  width: 4.5rem;
+  height: 4.5rem;
+  pointer-events: none;
+}
+
+.mission-visual::before {
+  top: 0.9375rem;
+  left: 0.9375rem;
+  border-top: 1px solid rgba(93, 216, 232, 0.62);
+  border-left: 1px solid rgba(93, 216, 232, 0.62);
+}
+
+.mission-visual::after {
+  right: 0.9375rem;
+  bottom: 0.9375rem;
+  border-right: 1px solid rgba(255, 155, 84, 0.62);
+  border-bottom: 1px solid rgba(255, 155, 84, 0.62);
+}
+
+.mission-visual canvas {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+  touch-action: pan-y;
+}
+
+.mission-topline {
+  position: absolute;
+  z-index: 3;
+  top: 1.5625rem;
+  right: 1.75rem;
+  left: 1.75rem;
+  min-height: 2.375rem;
+  padding-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  border-bottom: 1px solid rgba(95, 126, 139, 0.35);
+  color: #b7c8cf;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.mission-topline > div {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.mission-topline i {
+  width: 0.4375rem;
+  height: 0.4375rem;
+  background: var(--color-green);
+  box-shadow: 0 0 0.75rem rgba(102, 224, 174, 0.8);
+  animation: system-pulse 2s ease-in-out infinite;
+}
+
+.mission-topline small {
+  color: #718690;
+  font-size: 0.75rem;
+}
+
+.mission-axis {
+  position: absolute;
+  z-index: 3;
+  color: rgba(132, 161, 173, 0.6);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  pointer-events: none;
+}
+
+.axis-x {
+  top: 49%;
+  left: 1.375rem;
+  transform: rotate(-90deg) translateX(-50%);
+  transform-origin: left top;
+}
+
+.axis-y {
+  top: 5.125rem;
+  right: 1.6875rem;
+}
+
+.mission-reticle {
+  position: absolute;
+  z-index: 2;
+  top: 48%;
+  left: 54%;
+  width: 72%;
+  max-width: 38.125rem;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(93, 216, 232, 0.08);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.mission-reticle::before,
+.mission-reticle::after {
+  content: "";
+  position: absolute;
+  inset: 11%;
+  border: 1px dashed rgba(93, 216, 232, 0.07);
+  border-radius: 50%;
+}
+
+.mission-reticle::after {
+  inset: 27%;
+  border-style: solid;
+}
+
+.mission-reticle i:first-child,
+.mission-reticle i:last-child {
+  position: absolute;
+  background: rgba(93, 216, 232, 0.12);
+}
+
+.mission-reticle i:first-child {
+  top: 50%;
+  right: -12%;
+  left: -12%;
+  height: 1px;
+}
+
+.mission-reticle i:last-child {
+  top: -12%;
+  bottom: -12%;
+  left: 50%;
+  width: 1px;
+}
+
+.mission-caption {
+  position: absolute;
+  z-index: 3;
+  bottom: 7.875rem;
+  left: 1.75rem;
+  width: min(22.5rem, calc(100% - 3.5rem));
+  margin: 0;
+  padding-left: 0.875rem;
+  border-left: 0.125rem solid var(--color-orange);
+  color: rgba(197, 215, 222, 0.78);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  pointer-events: none;
+}
+
+.mission-hud {
+  position: absolute;
+  z-index: 4;
+  right: 1.75rem;
+  bottom: 1.6875rem;
+  left: 1.75rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid #344b56;
+  border-left: 1px solid #344b56;
+  background: rgba(5, 13, 18, 0.82);
+  backdrop-filter: blur(0.75rem);
+  pointer-events: none;
+}
+
+.mission-hud > div {
+  min-width: 0;
+  min-height: 4.25rem;
+  padding: 0.75rem 0.8125rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid #344b56;
+  border-bottom: 1px solid #344b56;
+}
+
+.mission-hud span,
+.mission-hud b {
+  font-family: var(--font-mono);
+}
+
+.mission-hud span {
+  color: #6f848e;
+  font-size: 0.6875rem;
+  letter-spacing: 0.05em;
+}
+
+.mission-hud b {
+  margin-top: 0.375rem;
+  overflow-wrap: anywhere;
+  color: #cfdee4;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.mission-hud .status-nominal {
+  color: var(--color-green);
+}

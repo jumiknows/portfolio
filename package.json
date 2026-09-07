@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
-    "build": "npm run quality && tsc -b && vite build",
+    "build": "npm run check && vite build",
+    "check": "npm run quality && npm run typecheck",
     "preview": "vite preview --host 0.0.0.0",
     "typecheck": "tsc -b --pretty false",
     "quality": "node scripts/quality-check.mjs"
