@@ -33,7 +33,7 @@ export const links = {
 export const profile = {
   eyebrow: 'Software engineer / systems + data + flight',
   lead: 'I engineer software where code meets operations: production systems, data pipelines, and hardware in the field.',
-  note: 'My best days usually end with a script, a checklist, and fewer people wondering what happens next.',
+  note: 'I care about making systems easier to operate, easier to verify, and less stressful for the people responsible for them.',
   current: 'Building reusable data products at Elections Canada and finishing Computer Science at SFU.',
   focusAreas: [
     'Production systems',
@@ -136,35 +136,45 @@ export const projects: Project[] = [
 ]
 
 export const about = {
-  heading: 'I have a habit of asking,',
-  emphasis: '“why are we doing this by hand?”',
+  eyebrow: '04 / Beyond the work',
+  heading: 'I’m usually the person who asks,',
+  emphasis: '“does this need to be done by hand?”',
   paragraphs: [
-    'That question has followed me through government systems, student teams, research projects, and classrooms. It usually leads to a small tool. More importantly, it leads to a better conversation with the people doing the work.',
-    'I also like teaching. I have hosted AI Coffee Chats for more than 300 attendees, tutored computing science at SFU, and taught twenty middle school students how to build with code.',
+    'I ask that question in government systems, student teams, research projects, and classrooms. Sometimes the answer is a small tool. Sometimes it is a clearer process. Either way, I start by listening to the people doing the work.',
+    'I also enjoy teaching. I have hosted AI Coffee Chats for more than 300 attendees, tutored computing science at SFU, and helped twenty middle school students build their first projects with code.',
   ],
   principles: [
-    'Ask the awkward question',
+    'Listen before building',
+    'Make the process clearer',
+    'Test the boring cases',
     'Write down what worked',
-    'Test the boring case',
-    'Bring people with you',
   ],
 } as const
 
-export const recognitions = [
-  { title: 'CS Undergraduate Society Award', detail: 'One of five recipients' },
-  { title: 'AI Hackathon Finalist', detail: 'Best Use of Google Gemini' },
-  { title: 'Mayor of Richmond Recognition Award', detail: 'Community recognition' },
-] as const
+export const recognition = {
+  eyebrow: 'Recognition',
+  heading: 'A few things I’m proud of.',
+  items: [
+    { title: 'CS Undergraduate Society Award', detail: 'Selected as one of five recipients' },
+    { title: 'AI Hackathon Finalist', detail: 'Finalist for Best Use of Google Gemini' },
+    { title: 'Mayor of Richmond Recognition Award', detail: 'Recognized for community involvement in Richmond' },
+  ],
+} as const
 
-export const skillGroups = [
-  { label: 'Build', value: 'Python, Java, TypeScript, JavaScript, SQL, Bash' },
-  { label: 'Connect', value: 'GraphQL, REST, SOAP, Denodo, Power BI, Pandas' },
-  { label: 'Ship', value: 'AWS, Docker, Kubernetes, OpenShift, Jenkins, Bamboo' },
-  { label: 'Check', value: 'Pytest, JUnit, Selenium, Cypress, Postman' },
-] as const
+export const skills = {
+  eyebrow: 'Technical skills',
+  heading: 'What I work with',
+  groups: [
+    { label: 'Build', value: 'Python, Java, TypeScript, JavaScript, SQL, Bash' },
+    { label: 'Connect', value: 'GraphQL, REST, SOAP, Denodo, Power BI, Pandas' },
+    { label: 'Ship', value: 'AWS, Docker, Kubernetes, OpenShift, Jenkins, Bamboo' },
+    { label: 'Check', value: 'Pytest, JUnit, Selenium, Cypress, Postman' },
+  ],
+} as const
 
 export const contact = {
+  eyebrow: 'Get in touch',
   heading: 'Want to compare notes?',
-  description: 'Tell me what you are building, what keeps breaking, or what you wish worked better.',
+  description: 'If you are solving a technical problem, building something useful, or simply want to say hello, I would be happy to hear from you.',
   coordinates: '49.2827° N / 123.1207° W',
 } as const

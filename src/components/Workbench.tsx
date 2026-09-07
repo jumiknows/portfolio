@@ -60,7 +60,7 @@ export function Workbench() {
         <div>
           <span className="bench-dot" aria-hidden="true" />
           <strong id="workbench-title">Engineering case files</strong>
-          <small>Architecture, constraints, ownership, verification</small>
+          <small>What I built, the constraints, and how we verified it</small>
         </div>
         <div className="bench-status-group">
           <p className="bench-status"><i aria-hidden="true" /> 03 systems documented</p>
