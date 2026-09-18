@@ -29,10 +29,10 @@
     .actions a, .actions button { min-height: 44px; padding: 0 16px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; font: inherit; text-decoration: none; cursor: pointer; transition: background 140ms ease, border-color 140ms ease, color 140ms ease, transform 140ms ease; }
     .actions a { border: 1px solid #c8c8c8; background: #fff; color: #111; }
     .actions a:hover { background: #f2f2f2; }
-    .actions button { border: 1px solid #111; background: #111; color: #fff; }
-    .actions button:hover { background: #2b2b2b; border-color: #2b2b2b; }
-    .actions a:active, .actions button:active { transform: scale(.985); }
-    .actions a:focus-visible, .actions button:focus-visible { outline: 3px solid #0a66ff; outline-offset: 3px; }
+    .actions .download { border-color: #111; background: #111; color: #fff; }
+    .actions .download:hover { background: #2b2b2b; border-color: #2b2b2b; }
+    .actions a:active { transform: scale(.985); }
+    .actions a:focus-visible { outline: 3px solid #0a66ff; outline-offset: 3px; }
     @media (max-width: 640px) {
       main { padding: 28px 22px; margin-top: 16px; }
       .row { align-items: flex-start; flex-direction: column; gap: 2px; }
@@ -150,7 +150,7 @@
 <body>
   <div class="actions">
     <a href="./">Back to portfolio</a>
-    <button type="button" onclick="window.print()">Print or save PDF</button>
+    <a class="download" href="./resume.pdf" download="Ernest-Wong-Resume.pdf">Download PDF</a>
   </div>
 
   <main>
