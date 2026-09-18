@@ -67,7 +67,7 @@ export function ContactSection() {
       <div className="contact-links">
         <a href={links.linkedin} target="_blank" rel="noreferrer">LinkedIn <Arrow /></a>
         <a href={links.github} target="_blank" rel="noreferrer">GitHub <Arrow /></a>
-        <a href={links.resume} target="_blank" rel="noreferrer">Résumé <Arrow /></a>
+        <a href={links.resume} target="_blank" rel="noreferrer">Resume <Arrow /></a>
       </div>
       <footer><span>Built by Ernest Wong</span><span>{contact.coordinates}</span></footer>
     </section>
