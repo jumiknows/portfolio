@@ -50,18 +50,20 @@
   min-height: 2.75rem;
   display: inline-flex;
   align-items: center;
-  gap: 0.3125rem;
-  border-bottom: 0.125rem solid transparent;
   color: #b9c6ce;
   font-family: var(--font-mono);
   font-size: 0.8125rem;
   font-weight: 600;
   text-decoration: none;
+  transition: color 140ms ease, opacity 140ms ease;
 }
 
 .site-header nav a:hover {
-  border-color: var(--color-cyan);
-  color: var(--color-cyan);
+  color: #f1f6f8;
+}
+
+.site-header nav a:active {
+  opacity: 0.72;
 }
 
 /* Hero */
@@ -218,40 +220,52 @@
 }
 
 .primary-link,
-.plain-link {
-  min-height: 3.125rem;
+.secondary-link {
+  min-height: 3rem;
+  padding-inline: 1.25rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 1.25rem;
+  border-radius: 0.625rem;
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 600;
   text-decoration: none;
+  transition:
+    background 140ms ease,
+    border-color 140ms ease,
+    color 140ms ease,
+    transform 140ms ease;
 }
 
 .primary-link {
-  min-width: 13rem;
-  padding-inline: 1.25rem;
+  min-width: 10.5rem;
   border: 1px solid var(--color-cyan);
   background: var(--color-cyan);
   color: #041017;
-  transition: background 150ms ease, box-shadow 150ms ease;
 }
 
 .primary-link:hover {
-  background: #9aecff;
-  box-shadow: 0 0 1.875rem rgba(93, 216, 232, 0.24);
+  background: #8be8f4;
+  border-color: #8be8f4;
 }
 
-.plain-link {
-  border-bottom: 0.125rem solid #637580;
-  color: #c6d2d9;
+.secondary-link {
+  min-width: 7rem;
+  border: 1px solid #445b67;
+  background: #0d171d;
+  color: #d7e1e6;
 }
 
-.plain-link:hover {
-  border-color: var(--color-cyan);
-  color: var(--color-cyan);
+.secondary-link:hover {
+  border-color: #708791;
+  background: #132129;
+  color: #f4f8fa;
+}
+
+.primary-link:active,
+.secondary-link:active {
+  transform: scale(0.985);
 }
 
 .current-note {
