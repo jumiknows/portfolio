@@ -1,6 +1,5 @@
 import { links, profile } from '../content'
 import MissionSystems from '../MissionSystems'
-import { Arrow } from './Arrow'
 
 export function Hero() {
   return (
@@ -22,12 +21,8 @@ export function Hero() {
         </div>
 
         <div className="hero-actions">
-          <a className="primary-link" href="#work">
-            Inspect the systems <span aria-hidden="true">↓</span>
-          </a>
-          <a className="plain-link" href={links.resume} target="_blank" rel="noreferrer">
-            resume <Arrow />
-          </a>
+          <a className="primary-link" href="#work">View projects</a>
+          <a className="secondary-link" href={links.resume}>Resume</a>
         </div>
 
         <div className="current-note">
