@@ -59,11 +59,11 @@ export function Workbench() {
       <div className="bench-toolbar">
         <div>
           <span className="bench-dot" aria-hidden="true" />
-          <strong id="workbench-title">Engineering case files</strong>
-          <small>What I built, the constraints, and how we verified it</small>
+          <strong id="workbench-title">Projects</strong>
+          <small>Technical work, scope, and results</small>
         </div>
         <div className="bench-status-group">
-          <p className="bench-status"><i aria-hidden="true" /> 03 systems documented</p>
+          <p className="bench-status"><i aria-hidden="true" /> 04 projects</p>
           <button
             className="qa-cat"
             type="button"
@@ -113,8 +113,8 @@ export function Workbench() {
           <p className="case-intro">{activeProject.intro}</p>
           <dl className="engineering-summary">
             <div><dt>Constraint</dt><dd>{activeProject.constraint}</dd></div>
-            <div><dt>My scope</dt><dd>{activeProject.ownership}</dd></div>
-            <div><dt>Verified by</dt><dd>{activeProject.verification}</dd></div>
+            <div><dt>Scope</dt><dd>{activeProject.ownership}</dd></div>
+            <div><dt>Evidence</dt><dd>{activeProject.verification}</dd></div>
           </dl>
           <ul>
             {activeProject.details.map((detail) => <li key={detail}>{detail}</li>)}
