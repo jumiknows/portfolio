@@ -206,7 +206,7 @@
   }
 
   .primary-link,
-  .plain-link {
+  .secondary-link {
     min-height: 3rem;
     font-size: 0.75rem;
   }
@@ -519,7 +519,7 @@
     width: 100%;
   }
 
-  .plain-link {
+  .secondary-link {
     width: fit-content;
   }
 
