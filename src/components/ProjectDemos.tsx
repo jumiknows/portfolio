@@ -39,9 +39,9 @@ function DataPipelineDemo() {
       <div className="paper-sample" aria-live="polite">
         <span className="pdf-noise">PAGE 4 / RAPPORT ANNUEL / ANNUAL REPORT</span>
         <h4>{parsed ? '2025/2026 utilization' : 'Utilisation / Utilization'}</h4>
-        <p>{parsed ? 'employee_population: 2368' : 'Organisation population 2,368'}</p>
+        <p>{parsed ? 'employee_population: validated' : 'Organisation population [detected]'}</p>
         <span className="pdf-noise">{parsed ? '' : 'Source: Tableau dashboard export'}</span>
-        <p>{parsed ? 'utilization_rate: validated' : 'Utilization rate 12.4%'}</p>
+        <p>{parsed ? 'utilization_rate: parsed' : 'Utilization rate [detected]'}</p>
         <span className="pdf-noise">{parsed ? '' : 'Confidential / Protected reporting footer'}</span>
       </div>
       <button type="button" aria-pressed={parsed} onClick={() => setParsed((value) => !value)}>
