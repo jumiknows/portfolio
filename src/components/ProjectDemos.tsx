@@ -30,24 +30,24 @@ function ReleaseDemo() {
   )
 }
 
-function CleanListenDemo() {
-  const [clean, setClean] = useState(false)
+function DataPipelineDemo() {
+  const [parsed, setParsed] = useState(false)
 
   return (
-    <div className={`clean-toy toy ${clean ? 'is-clean' : ''}`} aria-label="Interactive CleanListen example">
-      <div className="toy-bar"><span>{clean ? 'listening copy' : 'raw PDF extraction'}</span><i aria-hidden="true" /></div>
+    <div className={`clean-toy toy ${parsed ? 'is-clean' : ''}`} aria-label="Interactive reporting pipeline example">
+      <div className="toy-bar"><span>{parsed ? 'normalized output' : 'tableau report.pdf'}</span><i aria-hidden="true" /></div>
       <div className="paper-sample" aria-live="polite">
-        <span className="pdf-noise">JOURNAL OF EXAMPLE RESEARCH / PAGE 7</span>
-        <h4>3. Methods</h4>
-        <p>We evaluate the proposed method on a held out set of research documents.</p>
-        <span className="pdf-noise">Downloaded from publisher.example / © Example Publisher</span>
-        <p>The classifier predicts whether each extracted line should be kept for listening.</p>
-        <span className="pdf-noise">References 42 to 67 / Return to navigation</span>
+        <span className="pdf-noise">PAGE 4 / RAPPORT ANNUEL / ANNUAL REPORT</span>
+        <h4>{parsed ? '2025/2026 utilization' : 'Utilisation / Utilization'}</h4>
+        <p>{parsed ? 'employee_population: 2368' : 'Organisation population 2,368'}</p>
+        <span className="pdf-noise">{parsed ? '' : 'Source: Tableau dashboard export'}</span>
+        <p>{parsed ? 'utilization_rate: validated' : 'Utilization rate 12.4%'}</p>
+        <span className="pdf-noise">{parsed ? '' : 'Confidential / Protected reporting footer'}</span>
       </div>
-      <button type="button" aria-pressed={clean} onClick={() => setClean((value) => !value)}>
-        {clean ? 'Bring the noise back' : 'Clean this page'}
+      <button type="button" aria-pressed={parsed} onClick={() => setParsed((value) => !value)}>
+        {parsed ? 'Show the PDF again' : 'Parse this report'}
       </button>
-      <small>The paper stays. The page furniture goes.</small>
+      <small>The report becomes structured data without re-keying it by hand.</small>
     </div>
   )
 }
@@ -77,6 +77,6 @@ function FlightDemo() {
 
 export function ProjectDemo({ projectId }: { projectId: ProjectId }) {
   if (projectId === 'production') return <ReleaseDemo />
-  if (projectId === 'cleanlisten') return <CleanListenDemo />
+  if (projectId === 'data') return <DataPipelineDemo />
   return <FlightDemo />
 }
