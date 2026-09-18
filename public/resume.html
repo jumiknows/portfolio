@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ernest Wong | Résumé</title>
+  <meta name="description" content="Résumé for Ernest Wong, software engineer and computer science student." />
+  <style>
+    :root { color-scheme: light; font-family: Georgia, 'Times New Roman', serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f4f4f1; color: #111; }
+    main { width: min(900px, calc(100% - 32px)); margin: 32px auto; background: #fff; padding: 42px 48px; box-shadow: 0 16px 48px rgba(0,0,0,.08); }
+    header { text-align: center; border-bottom: 2px solid #111; padding-bottom: 14px; }
+    h1 { margin: 0 0 6px; font-size: 30px; letter-spacing: .01em; }
+    .contact { font-family: Arial, sans-serif; font-size: 13px; line-height: 1.6; }
+    .contact a { color: inherit; }
+    section { margin-top: 24px; }
+    h2 { margin: 0 0 10px; font: 700 14px/1.2 Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; border-bottom: 1px solid #555; padding-bottom: 4px; }
+    .entry { margin: 0 0 16px; }
+    .row { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; }
+    .row strong { font-size: 15px; }
+    .row span { white-space: nowrap; font-size: 14px; }
+    .role { margin: 2px 0 5px; font-style: italic; }
+    ul { margin: 5px 0 0 20px; padding: 0; }
+    li { margin: 4px 0; line-height: 1.35; }
+    .compact li { margin: 2px 0; }
+    .skills p { margin: 4px 0; line-height: 1.4; }
+    .actions { width: min(900px, calc(100% - 32px)); margin: 24px auto 0; display: flex; justify-content: space-between; align-items: center; font: 600 14px Arial, sans-serif; }
+    .actions a, .actions button { border: 1px solid #222; background: #fff; color: #111; padding: 10px 14px; text-decoration: none; cursor: pointer; }
+    @media (max-width: 640px) {
+      main { padding: 28px 22px; margin-top: 16px; }
+      .row { align-items: flex-start; flex-direction: column; gap: 2px; }
+      .row span { white-space: normal; }
+    }
+    @media print {
+      body { background: #fff; }
+      .actions { display: none; }
+      main { width: 100%; margin: 0; padding: 0; box-shadow: none; }
+      section { break-inside: avoid; }
+      a { text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="actions">
+    <a href="./">← Back to portfolio</a>
+    <button type="button" onclick="window.print()">Print / Save as PDF</button>
+  </div>
+
+  <main>
+    <header>
+      <h1>Ernest Wong</h1>
+      <div class="contact">
+        <a href="tel:+17785510906">778-551-0906</a> |
+        <a href="mailto:ernest_wong@sfu.ca">ernest_wong@sfu.ca</a> |
+        <a href="https://www.linkedin.com/in/jumiknows/">linkedin.com/in/jumiknows/</a> |
+        <a href="https://github.com/jumiknows">github.com/jumiknows</a>
+      </div>
+    </header>
+
+    <section>
+      <h2>Education</h2>
+      <div class="entry"><div class="row"><strong>Simon Fraser University, Burnaby, BC</strong><span>December 2027</span></div><div class="role">Bachelor of Science in Computer Science</div></div>
+      <div class="entry"><div class="row"><strong>University of Glasgow, Scotland, UK</strong><span>August 2024</span></div><div class="role">Field Studies in Cybercrime</div></div>
+      <div class="entry"><div class="row"><strong>British Columbia Institute of Technology, Vancouver, BC</strong><span>December 2021</span></div><div class="role">Diploma in Cloud Computing Systems, Completed with Distinction</div></div>
+    </section>
+
+    <section>
+      <h2>Technical Experience</h2>
+
+      <div class="entry">
+        <div class="row"><strong>Oakmont Industrial</strong><span>September 2026 - Present</span></div>
+        <div class="role">Software Engineer Co-op</div>
+        <ul>
+          <li>Turned an open-ended ERP integration request into a vendor-backed proof-of-concept plan for moving eMullion sales orders into Aquilon without re-keying order data.</li>
+          <li>Secured the technical path with Aquilon by confirming XML and JSON imports over SFTP, documenting the required XSD, and establishing that Aquilon must generate production jobs.</li>
+          <li>Mapped eMullion worksheet fields to Aquilon sales-order requirements and chose Go for a small Linux service, giving the team a testable build plan.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="row"><strong>Elections Canada | Government of Canada</strong><span>May 2026 - Present</span></div>
+        <div class="role">Data Analyst Co-op</div>
+        <ul>
+          <li>Replaced hand transcription with a Python pipeline that converts multi-page Tableau PDFs into normalized, Power BI ready CSVs and recovers metrics missed in earlier reports.</li>
+          <li>Made the pipeline resilient to new reporting years by splitting extraction into bilingual parsers for five dashboard sections and validating decimals, missing fields, and zero-versus-null values.</li>
+          <li>Moved repeated Power BI rules into reusable Denodo SQL and VQL views, letting non-technical staff filter flagged records and calculate issue rates without rewriting queries.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="row"><strong>ISED | Government of Canada</strong><span>January 2025 - August 2026</span></div>
+        <div class="role">Software Reliability Engineer | Cloud Ops | Student Programmer Co-op</div>
+        <ul>
+          <li>Led production deployments for the $100M+ revenue-generating patent submission portal, coordinating AWS Cloud Ops, Salesforce, and Java teams to ship releases cleanly within maintenance windows.</li>
+          <li>Built Java drift detection tools using GraphQL APIs to monitor configuration consistency across 8+ environments with Jenkins automation for daily health reports and mismatch alerts.</li>
+          <li>Developed Python/Selenium release automation tools to standardize CI/CD setup across Bitbucket, Bamboo, Nexus, and IBM WebSphere for 50+ applications, reducing manual release workflows.</li>
+          <li>Resolved UI/UX and API defects in Salesforce Lightning components affecting bilingual submissions, improving reliability for high-volume online patent filings.</li>
+          <li>Co-designed a Duolingo-inspired equity, diversity, and inclusion training module in under 6 hours, earning finalist honors for Most Impactful and Best Use of Google Gemini at Canada's largest AI hackathon and being featured in the ISED newsletter.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="row"><strong>UBC Orbit | SFU SAT Engineering Design Team</strong><span>September 2023 - August 2026</span></div>
+        <div class="role">Executive | Mission Operations Developer | Embedded Systems Lead</div>
+        <ul>
+          <li>Built the ALEASAT Spacecraft Dashboard with AWS, OpenShift API, and React to visualize telemetry and run command workflows, supporting a European Space Agency mission targeting a 2028 SpaceX launch.</li>
+          <li>Migrated outreach websites from Squarespace to GitHub Pages and React, eliminating hosting costs.</li>
+          <li>Spearheaded the full design lifecycle through Preliminary Design Review, Critical Design Review, and Flight Readiness Review for a high-altitude balloon reaching 30 km.</li>
+          <li>Developed Python software integrating 10+ sensors including GPS, cameras, and transmitters with a Raspberry Pi.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="row"><strong>École Montgomery Middle School</strong><span>September 2024 - December 2024</span></div>
+        <div class="role">After-school Computer Instructor</div>
+        <ul>
+          <li>Designed and delivered coding lessons for a class of 20 students using Minecraft Education, block-based programming, and Python.</li>
+          <li>Introduced web development through CodePen and GitHub Pages, enabling students to design and publish their own websites.</li>
+          <li>Adapted technical concepts into accessible, hands-on activities that encouraged experimentation, creativity, and independent problem-solving.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="row"><strong>Simon Fraser University | Faculty of Applied Sciences</strong><span>May 2024 - August 2024</span></div>
+        <div class="role">Research Assistant in AI Cybersecurity</div>
+        <ul>
+          <li>Developed a machine learning tool using Python to remove personal information from AI models, achieving F1 greater than 80% on evaluation datasets.</li>
+          <li>Identified potential security risks in AI models, such as unauthorized access to sensitive data, using Tensor Trust to demonstrate vulnerabilities.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Leadership & Teaching</h2>
+      <div class="entry">
+        <div class="row"><strong>Simon Fraser University | Faculty of Applied Sciences</strong><span>January 2024 - Present</span></div>
+        <div class="role">Student Ambassador | Computing Science Peer Tutor</div>
+        <ul>
+          <li>Delivered presentations at university recruitment events, reaching 100+ prospective students and inspiring two individuals to pursue Computer Science at SFU and join SFU SAT.</li>
+          <li>Developed an automated system using Python and Selenium to send 200 personalized emails to schedule mentoring sessions within a day.</li>
+          <li>Engaged students as a computing science peer tutor through exploratory discussions around introductory Python concepts.</li>
+          <li>Collaborated with instructors to curate personalized three-hour one-on-one tutoring sessions.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Certifications & Awards</h2>
+      <ul class="compact">
+        <li>AWS Certified AI Practitioner</li>
+        <li>Amateur Radio Operator Certificate</li>
+        <li>Computer Science Undergraduate Society Award, one of five awarded annually for SFU contributions</li>
+        <li>Recognition Award from the Mayor of Richmond for Community Contributions</li>
+        <li>Global Skills Opportunity: Equity, Diversity, and Inclusion International Mobility Award</li>
+      </ul>
+    </section>
+
+    <section class="skills">
+      <h2>Technical Skills</h2>
+      <p><strong>Languages:</strong> Python, Go, Java, JavaScript, TypeScript, SQL, Bash, HTML, CSS, JSON, XML</p>
+      <p><strong>Data and APIs:</strong> Denodo, Power BI, Pandas, Spark, GraphQL, REST, SOAP</p>
+      <p><strong>Frameworks and Testing:</strong> React, Node.js, Prisma, Selenium, JUnit, Pytest, Cypress, Power BI, Salesforce</p>
+      <p><strong>Cloud and DevOps:</strong> AWS, Docker, Kubernetes, OpenShift, Jenkins, Bamboo, Bitbucket, IBM WebSphere</p>
+      <p><strong>Tools:</strong> Git, Jira, Postman, SoapUI, Figma, Maven, Poetry</p>
+    </section>
+  </main>
+</body>
+</html>
