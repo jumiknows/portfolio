@@ -13,7 +13,7 @@ The check covers:
 - visible keyboard focus
 - reduced motion support
 - compact desktop and mobile layout rules
-- presence of the main work, current role, résumé, and contact content
+- presence of the main work, current role, resume, and contact content
 - absence of em dashes and en dashes in visible source
 - centralized responsive rules and bounded component/style module sizes
 
@@ -27,5 +27,5 @@ than resizing the entire page.
 
 The production build passes the source quality check, strict TypeScript
 compilation, and Vite bundling. Before public launch, manually exercise the three case tabs, interactive controls,
-résumé link, email link, and external project links on one phone and one desktop
+resume link, email link, and external project links on one phone and one desktop
 browser.
