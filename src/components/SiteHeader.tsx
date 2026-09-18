@@ -12,7 +12,7 @@ export function SiteHeader() {
         <a href="#work">Work</a>
         <a href="#about">About</a>
         <a href={links.resume} target="_blank" rel="noreferrer">
-          Résumé <Arrow />
+          Resume <Arrow />
         </a>
         <a href={links.email}>Email</a>
       </nav>
