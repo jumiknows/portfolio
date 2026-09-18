@@ -1,4 +1,4 @@
-export type ProjectId = 'production' | 'data' | 'space'
+export type ProjectId = 'production' | 'audiobook' | 'data' | 'space'
 
 export interface Link {
   label: string
@@ -31,31 +31,31 @@ export const links = {
 } as const
 
 export const profile = {
-  eyebrow: 'Software engineer / systems + data + mission software',
-  lead: 'I build software that connects messy real-world systems: production platforms, data pipelines, ERP integrations, and hardware in the field.',
-  note: 'I like turning manual, fragile work into systems that are easier to operate, easier to verify, and easier for the next person to understand.',
-  current: 'Building ERP integration software at Oakmont Industrial and data automation at Elections Canada while finishing Computer Science at SFU.',
+  eyebrow: 'Software engineer / systems, data, and embedded software',
+  lead: 'I build production tooling, data pipelines, system integrations, and embedded software.',
+  note: 'Most of my work starts with a manual or fragile process and ends with something testable, repeatable, and easier to operate.',
+  current: 'Software Engineer Co-op at Oakmont Industrial and Data Analyst Co-op at Elections Canada. Computer Science at SFU.',
   focusAreas: [
     'Production systems',
-    'Data + automation',
+    'Data engineering',
     'Systems integration',
-    'Embedded + mission',
+    'Embedded systems',
   ],
 } as const
 
 export const projects: Project[] = [
   {
     id: 'production',
-    tab: 'Release day',
+    tab: 'Release automation',
     label: '01 / Production systems',
     organization: 'ISED, Government of Canada',
     dates: 'Jan 2025 to Aug 2026',
-    title: 'I made release day less dependent on memory.',
+    title: 'Production Release Automation',
     intro:
-      'The patent submission platform spanned more than 50 applications and eight environments. A quiet configuration mismatch could turn a maintenance window into a long night.',
+      'Release work spanned 50+ applications and 8+ environments across Java, Salesforce, cloud, and database systems.',
     details: [
-      'Built Java and Python tooling with GraphQL to compare environment configuration and surface drift before it reached production.',
-      'Moved repeat checks into Jenkins and coordinated application, cloud, Salesforce, and database teams during production deployments.',
+      'Built Java and Python drift-detection tooling with GraphQL and Jenkins to compare configuration across 8+ environments and surface mismatches before production.',
+      'Led production deployments for a $100M+ patent submission platform, coordinating AWS Cloud Ops, Salesforce, Java, and database teams through maintenance windows.',
     ],
     proof: [
       { value: '8+', label: 'environments compared' },
@@ -69,21 +69,50 @@ export const projects: Project[] = [
       { label: 'Release review', detail: 'Evidence before production' },
     ],
     constraint: 'Configuration drift across 8+ environments',
-    ownership: 'Comparison tooling, automated checks, release verification',
-    verification: 'Daily reports and production release checks across 50+ applications',
+    ownership: 'Drift detection, release automation, production verification',
+    verification: 'Daily reports and release checks across 50+ applications',
+  },
+  {
+    id: 'audiobook',
+    tab: 'PDF audiobook',
+    label: '02 / Applied machine learning',
+    organization: 'Personal project',
+    dates: '2025',
+    title: 'PDF Audiobook',
+    intro:
+      'Academic PDFs contain headers, page numbers, citations, and navigation text that make text-to-speech difficult to follow.',
+    details: [
+      'Trained a Python and scikit-learn classifier to identify readable research content while removing repeated PDF page noise without summarizing or rewriting the source.',
+      'Achieved 91.2% prototype accuracy and an 89.7% KEEP F1 score, then wrapped the classifier in a repeatable command-line workflow with Pytest coverage.',
+    ],
+    proof: [
+      { value: '91.2%', label: 'prototype accuracy' },
+      { value: '89.7%', label: 'KEEP F1 score' },
+    ],
+    tools: ['Python', 'scikit-learn', 'Pandas', 'Pytest'],
+    system: [
+      { label: 'PDF input', detail: 'Extracted document lines' },
+      { label: 'Features', detail: 'Text + layout signals' },
+      { label: 'Classifier', detail: 'KEEP or DROP' },
+      { label: 'Output', detail: 'Cleaner listening copy' },
+    ],
+    constraint: 'Remove page noise without changing the research',
+    ownership: 'Training pipeline, classifier, CLI workflow, tests',
+    verification: '91.2% accuracy and 89.7% KEEP F1',
+    links: [{ label: 'View code', href: 'https://github.com/jumiknows/CleanListen' }],
   },
   {
     id: 'data',
     tab: 'PDF to data',
-    label: '02 / Data automation',
+    label: '03 / Data engineering',
     organization: 'Elections Canada, Government of Canada',
     dates: 'May 2026 to present',
-    title: 'I turned reporting PDFs back into usable data.',
+    title: 'EAP Reporting Pipeline',
     intro:
-      'Monthly reporting arrived as multi-page Tableau PDFs. Updating Power BI meant manually finding values, retyping them, and hoping every reporting year behaved like the last.',
+      'Monthly reporting arrived as multi-page Tableau PDFs instead of structured exports required by Power BI.',
     details: [
-      'Built a Python pipeline that converts multi-page Tableau PDFs into normalized, Power BI ready CSVs while recovering metrics missed in earlier reports.',
-      'Split extraction into bilingual parsers and added validation for decimals, missing fields, reporting years, and zero-versus-null values.',
+      'Automated Tableau-to-Power BI reporting with Python by converting multi-page PDFs into normalized CSV datasets, replacing manual transcription and recovering metrics missed in earlier reports.',
+      'Designed bilingual parsers for five dashboard sections with cross-year validation for decimals, missing fields, reporting periods, and zero-versus-null values.',
     ],
     proof: [
       { value: '5', label: 'dashboard sections parsed' },
@@ -96,22 +125,22 @@ export const projects: Project[] = [
       { label: 'Validation', detail: 'Schema + value checks' },
       { label: 'Reporting', detail: 'Normalized CSVs + Power BI' },
     ],
-    constraint: 'Source reports are PDFs, not structured exports',
+    constraint: 'Source reports are PDFs instead of structured exports',
     ownership: 'Parser architecture, validation, data model, reporting workflow',
-    verification: 'Cross-year checks for missing fields, decimals, and zero-versus-null values',
+    verification: 'Cross-year validation for missing fields, decimals, and zero-versus-null values',
   },
   {
     id: 'space',
-    tab: '30 km up',
-    label: '03 / Mission software',
+    tab: 'Mission software',
+    label: '04 / Embedded + mission',
     organization: 'UBC Orbit + SFU SAT',
     dates: 'Sep 2023 to Aug 2026',
-    title: 'At 30 km, we could not walk over and restart it.',
+    title: 'ALEASAT Mission Software',
     intro:
-      'That changed how I thought about telemetry, power, error handling, and every assumption hidden inside a diagram.',
+      'Spacecraft and high-altitude systems need telemetry and command software that remains useful when hardware is remote and recovery options are limited.',
     details: [
-      'Built the ALEASAT spacecraft dashboard with React, AWS, and OpenShift APIs to visualize telemetry and support command workflows for an ESA-supported CubeSat mission.',
-      'Led software for a high-altitude balloon, integrating more than ten sensors through design reviews, ground testing, and flight.',
+      'Built a React, AWS, and OpenShift spacecraft dashboard to visualize telemetry and run command workflows for ALEASAT, an ESA-supported CubeSat mission targeting a 2028 SpaceX launch.',
+      'Led high-altitude balloon software through PDR, CDR, and flight-readiness review, integrating 10+ sensors with Python and Raspberry Pi for a flight reaching about 30 km.',
     ],
     proof: [
       { value: '10+', label: 'sensors integrated' },
@@ -135,24 +164,24 @@ export const projects: Project[] = [
 ]
 
 export const about = {
-  eyebrow: '04 / Beyond the work',
-  heading: 'I’m usually the person who asks,',
-  emphasis: '“does this need to be done by hand?”',
+  eyebrow: 'About',
+  heading: 'I like work that has a real system on the other side of it.',
+  emphasis: '',
   paragraphs: [
-    'I ask that question in production systems, ERP workflows, data reporting, student teams, research projects, and classrooms. Sometimes the answer is a small tool. Sometimes it is a clearer process. Either way, I start by understanding the people and systems already doing the work.',
-    'I also enjoy teaching. I have taught coding to middle school students, tutored computing science at SFU, and represented the Faculty of Applied Sciences as a student ambassador.',
+    'I have worked across government platforms, ERP integrations, reporting pipelines, research, and student spacecraft. The common thread is practical engineering: understand the system, find the failure points, build the smallest useful improvement, and verify it.',
+    'I also teach. I have taught coding to middle school students, tutored computing science at SFU, and represented the Faculty of Applied Sciences as a student ambassador.',
   ],
   principles: [
-    'Listen before building',
-    'Make the process clearer',
-    'Test the boring cases',
-    'Write down what worked',
+    'Understand the system first',
+    'Automate repeatable work',
+    'Test edge cases',
+    'Document what matters',
   ],
 } as const
 
 export const recognition = {
   eyebrow: 'Recognition',
-  heading: 'A few things I’m proud of.',
+  heading: 'Awards and recognition',
   items: [
     { title: 'CS Undergraduate Society Award', detail: 'One of five recipients selected annually for contributions at SFU' },
     { title: 'AI Hackathon Finalist', detail: 'Finalist for Most Impactful and Best Use of Google Gemini' },
@@ -162,18 +191,18 @@ export const recognition = {
 
 export const skills = {
   eyebrow: 'Technical skills',
-  heading: 'What I work with',
+  heading: 'Tools I use',
   groups: [
-    { label: 'Build', value: 'Python, Go, Java, TypeScript, JavaScript, SQL, Bash' },
-    { label: 'Connect', value: 'GraphQL, REST, SOAP, JSON, XML, Denodo, Pandas' },
-    { label: 'Ship', value: 'AWS, Docker, Kubernetes, OpenShift, Jenkins, Bamboo' },
-    { label: 'Check', value: 'Pytest, JUnit, Selenium, Cypress, Postman, Power BI' },
+    { label: 'Languages', value: 'Python, Go, Java, TypeScript, JavaScript, SQL, Bash' },
+    { label: 'Data + APIs', value: 'GraphQL, REST, SOAP, JSON, XML, Denodo, Pandas, Power BI' },
+    { label: 'Cloud + DevOps', value: 'AWS, Docker, Kubernetes, OpenShift, Jenkins, Bamboo, Bitbucket' },
+    { label: 'Testing + Tools', value: 'Pytest, JUnit, Selenium, Cypress, Postman, Figma, Maven, Poetry' },
   ],
 } as const
 
 export const contact = {
-  eyebrow: 'Get in touch',
-  heading: 'Want to compare notes?',
-  description: 'If you are building something useful, solving a technical problem, or simply want to say hello, I would be happy to hear from you.',
+  eyebrow: 'Contact',
+  heading: 'Get in touch',
+  description: 'I am always happy to talk about software, systems, projects, or opportunities.',
   coordinates: '49.2827° N / 123.1207° W',
 } as const
