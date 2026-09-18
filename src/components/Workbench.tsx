@@ -1,6 +1,5 @@
 import { useRef, useState, type KeyboardEvent } from 'react'
 import { projects, type Project, type ProjectId } from '../content'
-import { Arrow } from './Arrow'
 import { ProjectDemo } from './ProjectDemos'
 
 const firstProject = projects[0]
@@ -123,7 +122,7 @@ export function Workbench() {
             <div className="case-links">
               {activeProject.links.map((link) => (
                 <a href={link.href} target="_blank" rel="noreferrer" key={link.href}>
-                  {link.label} <Arrow />
+{link.label}
                 </a>
               ))}
             </div>
