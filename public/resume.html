@@ -178,9 +178,8 @@
         <div class="row"><strong>Oakmont Industrial</strong><span>September 2026 - Present</span></div>
         <div class="role">Software Engineer Co-op</div>
         <ul>
-          <li>Defined the proof-of-concept architecture for transferring eMullion sales orders into Aquilon ERP, eliminating duplicate order entry from the target workflow.</li>
-          <li>Validated XML and JSON sales-order imports over SFTP with the Aquilon vendor, establishing the supported integration path and XSD requirements before implementation.</li>
-          <li>Mapped eMullion export fields to Aquilon sales-order requirements and designed a Go service for Linux, converting the vendor workflow into a testable implementation plan.</li>
+          <li>Unblocked an ERP integration proof of concept by validating Aquilon's XML and JSON import path over SFTP and confirming that production jobs must originate inside the ERP.</li>
+          <li>Mapped eMullion fields to Aquilon's sales-order schema and designed a Go transfer service to eliminate duplicate order entry.</li>
         </ul>
       </div>
 
@@ -188,9 +187,9 @@
         <div class="row"><strong>Elections Canada | Government of Canada</strong><span>May 2026 - Present</span></div>
         <div class="role">Data Analyst Co-op</div>
         <ul>
-          <li>Automated Tableau-to-Power BI reporting with Python by converting multi-page PDFs into normalized CSV datasets, replacing manual transcription and recovering metrics missed in earlier reports.</li>
-          <li>Designed bilingual parsers for five dashboard sections with cross-year validation for decimals, missing fields, reporting periods, and zero-versus-null values.</li>
-          <li>Moved repeated Power BI validation rules into reusable Denodo SQL and VQL views, enabling non-technical QA staff to filter issues and calculate issue rates without rewriting queries.</li>
+          <li>Automated monthly EAP reporting with a Python pipeline that converts multi-page Tableau PDFs into Power BI-ready CSVs, replacing manual transcription and recovering metrics omitted from earlier datasets.</li>
+          <li>Made the pipeline resilient to new reporting years by splitting extraction into bilingual parsers for five dashboard sections and validating decimals, missing fields, and zero-versus-null values.</li>
+          <li>Enabled non-technical analysts to calculate issue rates without SQL by moving recurring business rules into reusable Denodo views consumed by Power BI.</li>
         </ul>
       </div>
 
@@ -198,22 +197,21 @@
         <div class="row"><strong>ISED | Government of Canada</strong><span>January 2025 - August 2026</span></div>
         <div class="role">Site Reliability Engineer | Cloud Ops | Student Programmer Co-op</div>
         <ul>
-          <li>Led production deployments for a $100M+ patent submission platform, coordinating AWS Cloud Ops, Salesforce, Java, and database teams through scheduled maintenance windows.</li>
-          <li>Built Java and GraphQL drift-detection tooling across 8+ environments, automating daily configuration checks and mismatch alerts through Jenkins.</li>
-          <li>Automated repeat release tasks with Python and Selenium across Bitbucket, Bamboo, Nexus, and IBM WebSphere, standardizing CI/CD workflows for 50+ applications.</li>
+          <li>Led releases for a $100M+ patent platform across AWS, Salesforce, and Java teams, restoring services within approved maintenance windows after application freeze and validation.</li>
+          <li>Automated configuration drift detection across 8+ environments with Java, GraphQL, and Jenkins, replacing manual comparisons with daily mismatch reports.</li>
+          <li>Automated CI/CD configuration for 50+ applications with Python and Selenium across Bitbucket, Bamboo, Nexus, and IBM WebSphere, replacing repeated manual setup.</li>
           <li>Resolved Salesforce Lightning UI and API defects affecting bilingual patent submissions, improving reliability in a high-volume production workflow.</li>
           <li>Co-designed a Duolingo-inspired equity, diversity, and inclusion training module in under 6 hours, earning finalist honors for Most Impactful and Best Use of Google Gemini at Canada's largest AI hackathon and being featured in the ISED newsletter.</li>
         </ul>
       </div>
 
       <div class="entry page-two-start">
-        <div class="row"><strong>UBC Orbit | SFU SAT Engineering Design Team</strong><span>September 2023 - August 2026</span></div>
+        <div class="row"><strong>UBC Orbit | SFU SAT Engineering Design Team</strong><span>September 2023 - September 2026</span></div>
         <div class="role">Executive | Mission Operations Developer | Embedded Systems Lead</div>
         <ul>
-          <li>Built a React, AWS, and OpenShift spacecraft dashboard to visualize telemetry and run command workflows for ALEASAT, an ESA-supported CubeSat mission targeting a 2028 SpaceX launch.</li>
+          <li>Built ALEASAT's React mission-operations dashboard to visualize telemetry and execute command workflows for a spacecraft planned for a European Space Agency mission and 2028 SpaceX launch.</li>
           <li>Migrated outreach websites from Squarespace to GitHub Pages and React, eliminating hosting costs.</li>
-          <li>Led high-altitude balloon development through Preliminary, Critical, and Flight Readiness Reviews, culminating in a flight reaching approximately 30 km.</li>
-          <li>Integrated 10+ sensors, cameras, GPS, and radio hardware with Python and Raspberry Pi for onboard flight data collection.</li>
+          <li>Led a high-altitude balloon mission through design and flight-readiness reviews, integrating Python software with 10+ Raspberry Pi sensors before a flight to 30 km.</li>
         </ul>
       </div>
 
@@ -264,11 +262,9 @@
 
     <section class="skills">
       <h2>Technical Skills</h2>
-      <p><strong>Languages:</strong> Python, Go, Java, JavaScript, TypeScript, SQL, Bash, HTML, CSS, JSON, XML</p>
-      <p><strong>Data and APIs:</strong> Denodo, Power BI, Pandas, Spark, GraphQL, REST, SOAP</p>
-      <p><strong>Frameworks and Testing:</strong> React, Node.js, Prisma, Selenium, JUnit, Pytest, Cypress, Power BI, Salesforce</p>
-      <p><strong>Cloud and DevOps:</strong> AWS, Docker, Kubernetes, OpenShift, Jenkins, Bamboo, Bitbucket, IBM WebSphere</p>
-      <p><strong>Tools:</strong> Git, Jira, Postman, SoapUI, Figma, Maven, Poetry</p>
+      <p><strong>Languages:</strong> Python, Go, Java, TypeScript, JavaScript, SQL, Bash</p>
+      <p><strong>Systems:</strong> React, Node.js, GraphQL, REST, Linux, AWS, Docker, Kubernetes, OpenShift, Salesforce</p>
+      <p><strong>Data and Delivery:</strong> Pandas, Denodo, Power BI, Jenkins, GitHub Actions, Selenium, JUnit, Pytest, Git</p>
     </section>
   </main>
 </body>
