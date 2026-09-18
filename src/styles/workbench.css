@@ -359,21 +359,29 @@
 }
 
 .case-links a {
-  min-height: 2.625rem;
+  min-height: 2.75rem;
+  padding-inline: 0.9375rem;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  border-bottom: 0.125rem solid #0b6171;
-  color: #0b6171;
+  border: 1px solid #6f858d;
+  border-radius: 0.5625rem;
+  background: rgba(255, 255, 255, 0.34);
+  color: #174f5b;
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   font-weight: 600;
   text-decoration: none;
+  transition: background 140ms ease, border-color 140ms ease, color 140ms ease, transform 140ms ease;
 }
 
 .case-links a:hover {
-  border-color: var(--color-cyan);
-  color: var(--color-cyan);
+  border-color: #356f7c;
+  background: rgba(255, 255, 255, 0.62);
+  color: #0b3f49;
+}
+
+.case-links a:active {
+  transform: scale(0.985);
 }
 
 .case-side {
