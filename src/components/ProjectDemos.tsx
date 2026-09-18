@@ -30,6 +30,27 @@ function ReleaseDemo() {
   )
 }
 
+function AudiobookDemo() {
+  const [clean, setClean] = useState(false)
+
+  return (
+    <div className={`clean-toy toy ${clean ? 'is-clean' : ''}`} aria-label="Interactive PDF audiobook example">
+      <div className="toy-bar"><span>{clean ? 'listening copy' : 'raw PDF extraction'}</span><i aria-hidden="true" /></div>
+      <div className="paper-sample" aria-live="polite">
+        <span className="pdf-noise">JOURNAL HEADER / PAGE 7</span>
+        <h4>3. Methods</h4>
+        <p>We evaluate the proposed method on a held-out set of research documents.</p>
+        <span className="pdf-noise">Publisher footer / navigation / citation noise</span>
+        <p>The classifier predicts whether each extracted line should be kept for listening.</p>
+      </div>
+      <button type="button" aria-pressed={clean} onClick={() => setClean((value) => !value)}>
+        {clean ? 'Show raw extraction' : 'Clean for listening'}
+      </button>
+      <small>Research text stays. Repeated page noise is removed.</small>
+    </div>
+  )
+}
+
 function DataPipelineDemo() {
   const [parsed, setParsed] = useState(false)
 
@@ -77,6 +98,7 @@ function FlightDemo() {
 
 export function ProjectDemo({ projectId }: { projectId: ProjectId }) {
   if (projectId === 'production') return <ReleaseDemo />
+  if (projectId === 'audiobook') return <AudiobookDemo />
   if (projectId === 'data') return <DataPipelineDemo />
   return <FlightDemo />
 }
