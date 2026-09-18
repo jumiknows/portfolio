@@ -1,5 +1,4 @@
 import { links } from '../content'
-import { Arrow } from './Arrow'
 
 export function SiteHeader() {
   return (
@@ -11,9 +10,7 @@ export function SiteHeader() {
       <nav aria-label="Main navigation">
         <a href="#work">Work</a>
         <a href="#about">About</a>
-        <a href={links.resume} target="_blank" rel="noreferrer">
-          Resume <Arrow />
-        </a>
+<a href={links.resume}>Resume</a>
         <a href={links.email}>Email</a>
       </nav>
     </header>
