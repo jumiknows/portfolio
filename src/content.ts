@@ -87,7 +87,7 @@ export const projects: Project[] = [
     ],
     proof: [
       { value: '5', label: 'dashboard sections parsed' },
-      { value: '0', label: 'manual re-keying steps' },
+      { value: 'EN/FR', label: 'bilingual parsing' },
     ],
     tools: ['Python', 'Pandas', 'Power BI', 'Denodo', 'SQL'],
     system: [
