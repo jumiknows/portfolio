@@ -42,9 +42,9 @@ const cssSource = [...sourceByFile]
 
 const requiredComponentMarkers = [
   ['skip link', 'Skip to content'],
-  ['portfolio work section', 'Engineering case files'],
+  ['portfolio work section', 'Projects'],
   ['current role', 'Elections Canada'],
-  ['data pipeline interaction', 'Parse this report'],
+  ['audiobook interaction', 'Clean for listening'],
   ['keyboard friendly project tabs', 'ArrowRight:'],
   ['contact email', 'ernest_wong@sfu.ca'],
   ['resume link', './resume.html'],
