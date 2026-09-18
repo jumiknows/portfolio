@@ -44,7 +44,7 @@ const requiredComponentMarkers = [
   ['skip link', 'Skip to content'],
   ['portfolio work section', 'Engineering case files'],
   ['current role', 'Elections Canada'],
-  ['CleanListen interaction', 'Clean this page'],
+  ['data pipeline interaction', 'Parse this report'],
   ['keyboard friendly project tabs', 'ArrowRight:'],
   ['contact email', 'ernest_wong@sfu.ca'],
   ['resume link', './resume.pdf'],
