@@ -27,7 +27,7 @@ export const links = {
   email: 'mailto:ernest_wong@sfu.ca',
   github: 'https://github.com/jumiknows',
   linkedin: 'https://www.linkedin.com/in/jumiknows/',
-  resume: './resume.pdf',
+  resume: './resume.html',
 } as const
 
 export const profile = {
