@@ -26,7 +26,7 @@ export function Hero() {
             Inspect the systems <span aria-hidden="true">↓</span>
           </a>
           <a className="plain-link" href={links.resume} target="_blank" rel="noreferrer">
-            résumé <Arrow />
+            resume <Arrow />
           </a>
         </div>
 
