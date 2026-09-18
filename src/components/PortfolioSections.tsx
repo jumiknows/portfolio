@@ -1,5 +1,4 @@
 import { about, contact, links, recognition, skills } from '../content'
-import { Arrow } from './Arrow'
 
 export function AboutSection() {
   return (
@@ -63,11 +62,11 @@ export function ContactSection() {
       <p className="section-number">{contact.eyebrow}</p>
       <h2>{contact.heading}</h2>
       <p>{contact.description}</p>
-      <a className="email-link" href={links.email}>ernest_wong@sfu.ca <Arrow /></a>
+      <a className="email-link" href={links.email}>Email me</a>
       <div className="contact-links">
-        <a href={links.linkedin} target="_blank" rel="noreferrer">LinkedIn <Arrow /></a>
-        <a href={links.github} target="_blank" rel="noreferrer">GitHub <Arrow /></a>
-        <a href={links.resume} target="_blank" rel="noreferrer">Resume <Arrow /></a>
+        <a href={links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href={links.github} target="_blank" rel="noreferrer">GitHub</a>
+        <a href={links.resume}>Resume</a>
       </div>
       <footer><span>Built by Ernest Wong</span><span>{contact.coordinates}</span></footer>
     </section>
