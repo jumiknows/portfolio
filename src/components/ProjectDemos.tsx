@@ -74,23 +74,46 @@ function DataPipelineDemo() {
 }
 
 
-function ShareGuardDemo() {
-  const [protectedView, setProtectedView] = useState(true)
+const multimediaModes = [
+  {
+    label: 'YUV brightness',
+    heading: 'Adjust luminance',
+    first: 'Y channel: 114 becomes 154',
+    second: 'U and V stay unchanged',
+    note: 'Brightness changes without shifting the image chroma.',
+  },
+  {
+    label: 'Huffman coding',
+    heading: 'Verify the round trip',
+    first: '16-bit PCM samples encoded',
+    second: 'Decoded samples match the input',
+    note: 'Compression only counts when the original signal comes back exactly.',
+  },
+  {
+    label: 'DCT compression',
+    heading: 'Keep the useful coefficients',
+    first: '8 by 8 image blocks transformed',
+    second: 'Quality measured with PSNR',
+    note: 'The preview makes compression artifacts visible instead of abstract.',
+  },
+]
+
+function MultimediaDemo() {
+  const [selected, setSelected] = useState(0)
+  const mode = multimediaModes[selected]
 
   return (
-    <div className="clean-toy toy" aria-label="Interactive ShareGuard host and audience view example">
-      <div className="toy-bar"><span>{protectedView ? 'audience view / protected' : 'host view / original'}</span><i aria-hidden="true" /></div>
+    <div className="clean-toy toy" aria-label="Interactive multimedia algorithm example">
+      <div className="toy-bar"><span>media_lab / {mode.label}</span><i aria-hidden="true" /></div>
       <div className="paper-sample" aria-live="polite">
-        <h4>Account settings</h4>
-        <p>Password: {protectedView ? '██████████' : 'demo-password-123'}</p>
-        <p>API token: {protectedView ? '████████████████' : 'sk_demo_51H9q3_example'}</p>
-        <p>Card: {protectedView ? '████ ████ ████ 4242' : '4242 4242 4242 4242'}</p>
-        <p>Display name: Ernest Example</p>
+        <h4>{mode.heading}</h4>
+        <p>{mode.first}</p>
+        <p>{mode.second}</p>
       </div>
-      <button type="button" aria-pressed={protectedView} onClick={() => setProtectedView((value) => !value)}>
-        {protectedView ? 'Show host view' : 'Show protected view'}
+      <button type="button" onClick={() => setSelected((value) => (value + 1) % multimediaModes.length)}>
+        Try the next transform
       </button>
-      <small>The host keeps the original page. Only the audience copy is masked.</small>
+      <small>{mode.note}</small>
     </div>
   )
 }
@@ -120,7 +143,7 @@ function FlightDemo() {
 
 export function ProjectDemo({ projectId }: { projectId: ProjectId }) {
   if (projectId === 'production') return <ReleaseDemo />
-  if (projectId === 'privacy') return <ShareGuardDemo />
+  if (projectId === 'multimedia') return <MultimediaDemo />
   if (projectId === 'cleanlisten') return <CleanListenDemo />
   if (projectId === 'data') return <DataPipelineDemo />
   return <FlightDemo />
