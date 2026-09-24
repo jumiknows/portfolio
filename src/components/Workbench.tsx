@@ -1,5 +1,5 @@
 import { useRef, useState, type KeyboardEvent } from 'react'
-import { projects, type Project, type ProjectId } from '../content'
+import { otherProjects, projects, type Project, type ProjectId } from '../content'
 import { ProjectDemo } from './ProjectDemos'
 
 const firstProject = projects[0]
@@ -62,7 +62,7 @@ export function Workbench() {
           <small>Technical work, scope, and results</small>
         </div>
         <div className="bench-status-group">
-          <p className="bench-status"><i aria-hidden="true" /> 05 projects</p>
+          <p className="bench-status"><i aria-hidden="true" /> 05 case studies</p>
           <button
             className="qa-cat"
             type="button"
@@ -142,6 +142,23 @@ export function Workbench() {
           </div>
         </div>
       </article>
+      <section className="project-index" aria-labelledby="project-index-title">
+        <div className="project-index-heading">
+          <h2 id="project-index-title">More projects</h2>
+          <p>Code, documentation, and team projects.</p>
+        </div>
+        <ul>
+          {otherProjects.map((project) => (
+            <li key={project.href}>
+              <a href={project.href} target="_blank" rel="noreferrer">
+                <strong>{project.title}</strong>
+                <span>{project.description}</span>
+                <small>View repository</small>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
     </section>
   )
 }

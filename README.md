@@ -5,7 +5,10 @@ Interactive portfolio for Ernest Wong, a software engineer and Computer Science 
 ## Projects
 
 - Production Release Automation at ISED
-- PDF Audiobook, a 2025 applied machine learning project
+- CleanListen, a PDF accessibility and machine learning project
+- ShareGuard, a privacy-preserving browser extension
+- Balloon4 and ALEASAT, embedded and mission software
+- Processor Pipeline Simulator and PDF Audiobook, systems and full-stack work
 - EAP Reporting Pipeline at Elections Canada
 - ALEASAT Mission Software with UBC Orbit and SFU SAT
 

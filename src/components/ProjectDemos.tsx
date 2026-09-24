@@ -30,7 +30,7 @@ function ReleaseDemo() {
   )
 }
 
-function AudiobookDemo() {
+function CleanListenDemo() {
   const [clean, setClean] = useState(false)
 
   return (
@@ -121,7 +121,7 @@ function FlightDemo() {
 export function ProjectDemo({ projectId }: { projectId: ProjectId }) {
   if (projectId === 'production') return <ReleaseDemo />
   if (projectId === 'privacy') return <ShareGuardDemo />
-  if (projectId === 'audiobook') return <AudiobookDemo />
+  if (projectId === 'cleanlisten') return <CleanListenDemo />
   if (projectId === 'data') return <DataPipelineDemo />
   return <FlightDemo />
 }
