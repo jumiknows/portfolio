@@ -1,4 +1,4 @@
-export type ProjectId = 'production' | 'privacy' | 'cleanlisten' | 'data' | 'space'
+export type ProjectId = 'production' | 'multimedia' | 'cleanlisten' | 'data' | 'space'
 
 export interface Link {
   label: string
@@ -73,33 +73,33 @@ export const projects: Project[] = [
     verification: 'Daily reports and release checks across 50+ applications',
   },
   {
-    id: 'privacy',
-    tab: 'Protected sharing',
-    label: '02 / Browser privacy',
-    organization: 'Personal project',
+    id: 'multimedia',
+    tab: 'Multimedia lab',
+    label: '02 / Media algorithms',
+    organization: 'Independent project inspired by SFU CMPT 365',
     dates: 'Sep 2026',
-    title: 'ShareGuard',
+    title: 'Multimedia Systems Lab',
     intro:
-      'Screen sharing can expose credentials and payment details that the presenter still needs to see while working.',
+      'Audio and image algorithms became much easier to understand once I could see each transform, test it, and compare the result.',
     details: [
-      'Built a Chrome Manifest V3 extension that keeps the host browser unchanged while rendering a separate audience view with selective masking for passwords, API tokens, payment-card numbers, and user-defined blackout regions.',
-      'Implemented tab capture, DOM geometry scanning, Canvas-based redaction, fail-closed navigation recovery, protected recording, deterministic unit tests, and Chromium smoke tests without requiring a cloud backend.',
+      'Built a dependency-free Java 17 desktop suite that reads PCM WAV files, separates stereo channels, renders waveforms, and verifies a complete Huffman encode and decode cycle.',
+      'Implemented YUV brightness and saturation controls, monochrome colour mapping, ordered and Floyd Steinberg dithering, block DCT compression, PSNR, and a radix-two FFT spectrum, backed by eight deterministic tests.',
     ],
     proof: [
-      { value: '3', label: 'automatic secret categories' },
-      { value: 'LOCAL', label: 'MVP processing model' },
+      { value: '8', label: 'deterministic tests' },
+      { value: '2', label: 'interactive media labs' },
     ],
-    tools: ['JavaScript', 'Chrome MV3', 'Canvas', 'Playwright'],
+    tools: ['Java 17', 'Swing', 'RIFF/WAV', 'DCT', 'FFT'],
     system: [
-      { label: 'Browser tab', detail: 'Original host view' },
-      { label: 'DOM scanner', detail: 'Visible sensitive regions' },
-      { label: 'Detector', detail: 'High-confidence local rules' },
-      { label: 'Protected canvas', detail: 'Audience-only redaction' },
+      { label: 'Media input', detail: 'PCM WAV and image files' },
+      { label: 'Decode and transform', detail: 'RIFF, YUV, dithering' },
+      { label: 'Compress and analyze', detail: 'Huffman, DCT, FFT' },
+      { label: 'Verify', detail: 'Round trips, metrics, and visual demos' },
     ],
-    constraint: 'Hide sensitive content from viewers without changing the host view',
-    ownership: 'Capture orchestration, detection, protected renderer, navigation recovery, UI',
-    verification: 'Unit tests and Chromium smoke tests for detection, rendering, and navigation',
-    links: [{ label: 'View code', href: 'https://github.com/jumiknows/shareguard' }],
+    constraint: 'Make low-level media algorithms visible without hiding them behind third-party libraries',
+    ownership: 'WAV parsing, codecs, transforms, interface, tests, and documentation',
+    verification: 'Eight deterministic tests plus generated visual demonstrations',
+    links: [{ label: 'View code', href: 'https://github.com/jumiknows/multimedia-systems-lab' }],
   },
   {
     id: 'cleanlisten',
@@ -188,7 +188,7 @@ export const projects: Project[] = [
     links: [
       { label: 'ALEASAT', href: 'https://www.aleasat.space/' },
       { label: 'SFU SAT', href: 'https://sfusat.org/' },
-      { label: 'Mission software code', href: 'https://github.com/jumiknows/AleasatV2' },
+      { label: 'Mission software code', href: 'https://github.com/jumiknows/Aleasat-Mission-Software' },
       { label: 'Balloon4 flight computer', href: 'https://github.com/jumiknows/Balloon4' },
     ],
   },
@@ -206,8 +206,13 @@ export const otherProjects = [
     href: 'https://github.com/jumiknows/Processor-Pipeline-Simulator',
   },
   {
+    title: 'SereniTea UX Case Study',
+    description: 'Team research and usability testing for a peer-support and self-help prototype.',
+    href: 'https://github.com/jumiknows/portfolio/blob/main/docs/serenitea-ux-case-study.md',
+  },
+  {
     title: 'PDF Audiobook',
-    description: 'React and TypeScript app for turning research PDFs into audio summaries.',
+    description: 'React and TypeScript listening app for research PDFs, built in 2025.',
     href: 'https://github.com/jumiknows/pdf-audiobook',
   },
   {
