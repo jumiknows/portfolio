@@ -4,6 +4,8 @@
 **Term:** Fall 2023  
 **Format:** Team research and interactive prototype
 
+[Open the interactive Figma prototype](https://www.figma.com/proto/HWzXdHgZrj34OYd2ZN5bR5/CMPT-363-Part-3-Vertical-Prototype-Group-34?node-id=2268-535&starting-point-node-id=2268%3A535&t=DknL9qwTm0QqbhWb-1)
+
 ## The question
 
 How might a digital experience help students find timely peer support and self-directed mental wellbeing resources without making the experience feel clinical or overwhelming?

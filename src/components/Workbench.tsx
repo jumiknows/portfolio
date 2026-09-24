@@ -153,7 +153,7 @@ export function Workbench() {
               <a href={project.href} target="_blank" rel="noreferrer">
                 <strong>{project.title}</strong>
                 <span>{project.description}</span>
-                <small>View repository</small>
+                <small>{project.action}</small>
               </a>
             </li>
           ))}

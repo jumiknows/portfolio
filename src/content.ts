@@ -227,27 +227,32 @@ export const otherProjects = [
   {
     title: 'Balloon4 Flight Computer',
     description: 'Raspberry Pi Zero sensor logging, unattended boot, and team onboarding.',
-    href: 'https://github.com/jumiknows/Balloon4',
+    href: 'https://github.com/jumiknows/Balloon4-Flight-Computer',
+    action: 'View repository',
   },
   {
     title: 'Processor Pipeline Simulator',
     description: 'C++ processor pipeline simulation with hazard and dependency handling.',
     href: 'https://github.com/jumiknows/Processor-Pipeline-Simulator',
+    action: 'View repository',
   },
   {
-    title: 'SereniTea UX Case Study',
-    description: 'Team research and usability testing for a peer-support and self-help prototype.',
-    href: 'https://github.com/jumiknows/portfolio/blob/main/docs/serenitea-ux-case-study.md',
+    title: 'SereniTea UX Prototype',
+    description: 'Team research, prototyping, and usability testing for a peer-support and self-help experience.',
+    href: 'https://www.figma.com/proto/HWzXdHgZrj34OYd2ZN5bR5/CMPT-363-Part-3-Vertical-Prototype-Group-34?node-id=2268-535&starting-point-node-id=2268%3A535&t=DknL9qwTm0QqbhWb-1',
+    action: 'Open Figma prototype',
   },
   {
     title: 'PDF Audiobook',
     description: 'React and TypeScript listening app for research PDFs, built in 2025.',
     href: 'https://github.com/jumiknows/pdf-audiobook',
+    action: 'View repository',
   },
   {
     title: 'SFU Satellite Website',
     description: 'React and TypeScript website for the satellite team, with handover documentation.',
     href: 'https://github.com/jumiknows/sfusat_website',
+    action: 'View repository',
   },
 ] as const
 
