@@ -62,7 +62,7 @@ export function Workbench() {
           <small>Technical work, scope, and results</small>
         </div>
         <div className="bench-status-group">
-          <p className="bench-status"><i aria-hidden="true" /> 04 projects</p>
+          <p className="bench-status"><i aria-hidden="true" /> 05 projects</p>
           <button
             className="qa-cat"
             type="button"
