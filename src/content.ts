@@ -1,4 +1,4 @@
-export type ProjectId = 'production' | 'privacy' | 'audiobook' | 'data' | 'space'
+export type ProjectId = 'production' | 'privacy' | 'cleanlisten' | 'data' | 'space'
 
 export interface Link {
   label: string
@@ -34,7 +34,7 @@ export const profile = {
   eyebrow: 'Software engineer / systems, data, and embedded software',
   lead: 'I build production tooling, data pipelines, system integrations, and embedded software.',
   note: 'Most of my work starts with a manual or fragile process and ends with something testable, repeatable, and easier to operate.',
-  current: 'Software Engineer Co-op at Oakmont Industrial and Data Analyst Co-op at Elections Canada. Computer Science at SFU.',
+  current: 'Software Engineering Co-op at Oakmont Industrial and AI Engineer / Data Scientist Co-op at Elections Canada. Computing Science at SFU.',
   focusAreas: [
     'Production systems',
     'Data engineering',
@@ -102,12 +102,12 @@ export const projects: Project[] = [
     links: [{ label: 'View code', href: 'https://github.com/jumiknows/shareguard' }],
   },
   {
-    id: 'audiobook',
-    tab: 'PDF audiobook',
+    id: 'cleanlisten',
+    tab: 'CleanListen',
     label: '03 / Applied machine learning',
     organization: 'Personal project',
-    dates: '2025',
-    title: 'PDF Audiobook',
+    dates: '2025 to present',
+    title: 'CleanListen',
     intro:
       'Academic PDFs contain headers, page numbers, citations, and navigation text that make text-to-speech difficult to follow.',
     details: [
@@ -188,9 +188,34 @@ export const projects: Project[] = [
     links: [
       { label: 'ALEASAT', href: 'https://www.aleasat.space/' },
       { label: 'SFU SAT', href: 'https://sfusat.org/' },
+      { label: 'Mission software code', href: 'https://github.com/jumiknows/AleasatV2' },
+      { label: 'Balloon4 flight computer', href: 'https://github.com/jumiknows/Balloon4' },
     ],
   },
 ]
+
+export const otherProjects = [
+  {
+    title: 'Balloon4 Flight Computer',
+    description: 'Raspberry Pi Zero sensor logging, unattended boot, and team onboarding.',
+    href: 'https://github.com/jumiknows/Balloon4',
+  },
+  {
+    title: 'Processor Pipeline Simulator',
+    description: 'C++ processor pipeline simulation with hazard and dependency handling.',
+    href: 'https://github.com/jumiknows/Processor-Pipeline-Simulator',
+  },
+  {
+    title: 'PDF Audiobook',
+    description: 'React and TypeScript app for turning research PDFs into audio summaries.',
+    href: 'https://github.com/jumiknows/pdf-audiobook',
+  },
+  {
+    title: 'SFU Satellite Website',
+    description: 'The student team's React and TypeScript website and handover work.',
+    href: 'https://github.com/jumiknows/sfusat_website',
+  },
+] as const
 
 export const about = {
   eyebrow: 'About',
