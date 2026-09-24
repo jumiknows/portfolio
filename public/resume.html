@@ -26,6 +26,7 @@
       font-variant-numeric: lining-nums tabular-nums;
     }
     .role { margin: 2px 0 5px; font-style: italic; }
+    .location { text-align: right; }
     ul { margin: 5px 0 0 20px; padding: 0; }
     li { margin: 4px 0; line-height: 1.35; }
     .compact li { margin: 2px 0; }
@@ -42,6 +43,7 @@
       main { padding: 28px 22px; margin-top: 16px; }
       .row { align-items: flex-start; flex-direction: column; gap: 2px; }
       .row span { white-space: normal; }
+      .role-row .location { align-self: flex-start; text-align: left; }
     }
     @page {
       size: Letter;
@@ -194,7 +196,10 @@
       <h2>Experience</h2>
       <div class="entry">
         <div class="row"><strong>Oakmont Industries Ltd.</strong><span>September 2026 - Present</span></div>
-        <div class="role">Software Engineering Co-op Student | AI Systems Integration | Surrey, BC</div>
+        <div class="row role-row">
+          <div class="role">Software Engineering Co-op Student | AI Systems Integration</div>
+          <span class="location">Surrey, BC</span>
+        </div>
         <ul>
           <li>Turned an open-ended ERP integration request into a vendor-backed proof of concept for moving eMullion sales orders into Aquilon without re-keying order data.</li>
           <li>Validated Aquilon's XML and JSON import path over SFTP, mapped eMullion fields to its sales-order schema, and produced a testable Go implementation plan.</li>
@@ -202,7 +207,10 @@
       </div>
       <div class="entry">
         <div class="row"><strong>Elections Canada</strong><span>May 2026 - Present</span></div>
-        <div class="role">AI Engineer | Data Scientist Co-op | Remote</div>
+        <div class="row role-row">
+          <div class="role">AI Engineer | Data Scientist Co-op</div>
+          <span class="location">Remote</span>
+        </div>
         <ul>
           <li>Replaced hand transcription with a Python pipeline that converts multi-page Tableau PDFs into normalized CSVs for Power BI and recovers metrics missed in earlier reports.</li>
           <li>Made the pipeline resilient to new reporting years by splitting extraction into bilingual parsers for five dashboard sections and validating decimals, missing fields, and the distinction between zero and null.</li>
@@ -211,7 +219,10 @@
       </div>
       <div class="entry">
         <div class="row"><strong>Innovation, Science and Economic Development Canada</strong><span>January 2025 - August 2026</span></div>
-        <div class="role">Site Reliability Engineer | Cloud Operations | Student Programmer Co-op | Ottawa, ON</div>
+        <div class="row role-row">
+          <div class="role">Site Reliability Engineer | Cloud Operations | Student Programmer Co-op</div>
+          <span class="location">Ottawa, ON</span>
+        </div>
         <ul>
           <li>Delivered maintenance-window releases for a $100M+ patent submission platform by coordinating AWS, Salesforce, Java, database, testing, and validation work across teams.</li>
           <li>Replaced manual environment-by-environment diagnosis with a Java and GraphQL drift detector that compares 8+ environments daily in Jenkins and points engineers to configuration mismatches.</li>
@@ -220,7 +231,10 @@
       </div>
       <div class="entry">
         <div class="row"><strong>SFU Satellite Design Team | UBC Orbit</strong><span>September 2023 - September 2026</span></div>
-        <div class="role">Executive | Mission Operations Developer | Embedded Systems Lead | Burnaby, BC</div>
+        <div class="row role-row">
+          <div class="role">Executive | Mission Operations Developer | Embedded Systems Lead</div>
+          <span class="location">Burnaby, BC</span>
+        </div>
         <ul>
           <li>Took a high-altitude balloon mission from design reviews through flight at approximately 30 km, integrating Python flight software with 10+ sensors and subsystems on a Raspberry Pi.</li>
           <li>Built ALEASAT's React mission-operations dashboard for telemetry monitoring and command workflows, supporting preparations for a European Space Agency mission and planned 2028 SpaceX launch.</li>
