@@ -1,4 +1,4 @@
-export type ProjectId = 'production' | 'multimedia' | 'cleanlisten' | 'data' | 'space'
+export type ProjectId = 'production' | 'privacy' | 'multimedia' | 'cleanlisten' | 'data' | 'space'
 
 export interface Link {
   label: string
@@ -73,9 +73,38 @@ export const projects: Project[] = [
     verification: 'Daily reports and release checks across 50+ applications',
   },
   {
+    id: 'privacy',
+    tab: 'Protected sharing',
+    label: '02 / Browser privacy',
+    organization: 'Independent project',
+    dates: 'Sep 2026',
+    title: 'ShareGuard',
+    intro:
+      'Screen sharing can expose credentials and payment details that the presenter still needs to see while working.',
+    details: [
+      'Built a Chrome Manifest V3 extension that keeps the host browser unchanged while rendering a separate audience view with selective masking for passwords, API tokens, payment-card numbers, and user-defined blackout regions.',
+      'Implemented tab capture, DOM geometry scanning, Canvas-based redaction, fail-closed navigation recovery, protected recording, deterministic unit tests, and Chromium smoke tests without requiring a cloud backend.',
+    ],
+    proof: [
+      { value: '3', label: 'automatic secret categories' },
+      { value: 'LOCAL', label: 'processing model' },
+    ],
+    tools: ['JavaScript', 'Chrome MV3', 'Canvas', 'Playwright'],
+    system: [
+      { label: 'Browser tab', detail: 'Original host view' },
+      { label: 'DOM scanner', detail: 'Visible sensitive regions' },
+      { label: 'Detector', detail: 'High-confidence local rules' },
+      { label: 'Protected canvas', detail: 'Audience-only redaction' },
+    ],
+    constraint: 'Hide sensitive content from viewers without changing the host view',
+    ownership: 'Capture orchestration, detection, protected renderer, navigation recovery, and interface',
+    verification: 'Unit tests and Chromium smoke tests for detection, rendering, and navigation',
+    links: [{ label: 'View code', href: 'https://github.com/jumiknows/shareguard' }],
+  },
+  {
     id: 'multimedia',
     tab: 'Multimedia lab',
-    label: '02 / Media algorithms',
+    label: '03 / Media algorithms',
     organization: 'Independent project inspired by SFU CMPT 365',
     dates: 'Sep 2026',
     title: 'Multimedia Systems Lab',
@@ -104,7 +133,7 @@ export const projects: Project[] = [
   {
     id: 'cleanlisten',
     tab: 'CleanListen',
-    label: '03 / Applied machine learning',
+    label: '04 / Applied machine learning',
     organization: 'Personal project',
     dates: '2025 to present',
     title: 'CleanListen',
@@ -133,7 +162,7 @@ export const projects: Project[] = [
   {
     id: 'data',
     tab: 'PDF to data',
-    label: '04 / Data engineering',
+    label: '05 / Data engineering',
     organization: 'Elections Canada, Government of Canada',
     dates: 'May 2026 to present',
     title: 'EAP Reporting Pipeline',
@@ -161,7 +190,7 @@ export const projects: Project[] = [
   {
     id: 'space',
     tab: 'Mission software',
-    label: '05 / Embedded + mission',
+    label: '06 / Embedded + mission',
     organization: 'UBC Orbit + SFU SAT',
     dates: 'Sep 2023 to Aug 2026',
     title: 'ALEASAT Mission Software',
@@ -189,7 +218,7 @@ export const projects: Project[] = [
       { label: 'ALEASAT', href: 'https://www.aleasat.space/' },
       { label: 'SFU SAT', href: 'https://sfusat.org/' },
       { label: 'Mission software code', href: 'https://github.com/jumiknows/Aleasat-Mission-Software' },
-      { label: 'Balloon4 flight computer', href: 'https://github.com/jumiknows/Balloon4' },
+      { label: 'Balloon4 flight computer', href: 'https://github.com/jumiknows/Balloon4-Flight-Computer' },
     ],
   },
 ]

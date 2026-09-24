@@ -176,6 +176,7 @@
   transition: background 150ms ease, color 150ms ease;
 }
 
+.project-tabs button:nth-child(3n),
 .project-tabs button:last-child {
   border-right: 1px solid #354a55;
 }
