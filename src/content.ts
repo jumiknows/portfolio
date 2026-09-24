@@ -212,7 +212,7 @@ export const otherProjects = [
   },
   {
     title: 'SFU Satellite Website',
-    description: 'The student team's React and TypeScript website and handover work.',
+    description: 'React and TypeScript website for the satellite team, with handover documentation.',
     href: 'https://github.com/jumiknows/sfusat_website',
   },
 ] as const
