@@ -10,7 +10,7 @@ export function SiteHeader() {
       <nav aria-label="Main navigation">
         <a href="#work">Work</a>
         <a href="#about">About</a>
-<a href={links.resume} download="Ernest_Wong_Resume.pdf">Resume</a>
+<a href={links.resume}>Resume</a>
         <a href={links.email}>Email</a>
       </nav>
     </header>

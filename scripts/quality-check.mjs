@@ -47,7 +47,7 @@ const requiredComponentMarkers = [
   ['audiobook interaction', 'Clean for listening'],
   ['keyboard friendly project tabs', 'ArrowRight:'],
   ['contact email', 'ernest_wong@sfu.ca'],
-  ['resume link', './resume.pdf'],
+  ['resume link', './resume.html'],
 ]
 
 for (const [label, marker] of requiredComponentMarkers) {
