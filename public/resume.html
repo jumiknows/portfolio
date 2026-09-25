@@ -47,7 +47,7 @@
     }
     @page {
       size: Letter;
-      margin: 0.38in 0.46in;
+      margin: 0;
     }
 
     @media print {
@@ -66,10 +66,23 @@
       }
 
       main {
-        width: auto;
+        width: 8.5in;
         margin: 0;
         padding: 0;
         box-shadow: none;
+      }
+
+      .resume-page {
+        width: 8.5in;
+        min-height: 11in;
+        padding: 0.38in 0.46in;
+        break-after: page;
+        page-break-after: always;
+      }
+
+      .resume-page:last-child {
+        break-after: auto;
+        page-break-after: auto;
       }
 
       header {
@@ -142,11 +155,6 @@
         line-height: 1.2;
       }
 
-      .page-two-start {
-        break-before: page;
-        page-break-before: always;
-      }
-
       a {
         color: inherit;
         text-decoration: none;
@@ -160,6 +168,7 @@
     <button class="download" type="button" onclick="window.print()">Print or save as PDF</button>
   </div>
   <main>
+    <div class="resume-page">
     <header>
       <h1>Ernest Wong</h1>
       <div class="contact">
@@ -227,7 +236,7 @@
           <li>Delivered maintenance-window releases for a $100M+ patent submission platform by coordinating AWS, Salesforce, Java, database, testing, and validation work across teams.</li>
           <li>Replaced manual environment-by-environment diagnosis with a Java and GraphQL drift detector that compares 8+ environments daily in Jenkins and points engineers to configuration mismatches.</li>
           <li>Standardized release setup for 50+ applications by automating Bitbucket, Bamboo, Nexus, and IBM WebSphere configuration with Python and Selenium.</li>
-          <li>Hosted ISED AI Coffee Chats for 300+ attendees, helping make technical AI discussions accessible across the organization.</li>
+          <li>Hosted ISED AI Coffee Chats for 300+ attendees, coordinating technical AI discussions across the organization.</li>
         </ul>
       </div>
       <div class="entry">
@@ -243,7 +252,10 @@
       </div>
     </section>
 
-    <section class="page-two-start">
+    </div>
+
+    <div class="resume-page">
+    <section>
       <h2>Additional Experience & Teaching</h2>
 
       <div class="entry">
@@ -252,9 +264,8 @@
           <div class="role">After-school Computer Instructor</div>
         </div>
         <ul>
-          <li>Designed and delivered coding lessons for 20 students using Minecraft Education, block-based programming, and Python.</li>
-          <li>Introduced web development through CodePen and GitHub Pages, helping students design and publish their own websites.</li>
-          <li>Adapted technical concepts into hands-on activities that encouraged experimentation and independent problem-solving.</li>
+          <li>Designed and taught hands-on coding lessons for 20 middle-school students using Minecraft Education, block-based programming, and Python.</li>
+          <li>Introduced web development through CodePen and GitHub Pages, guiding students through designing and publishing their own websites.</li>
         </ul>
       </div>
 
@@ -277,9 +288,9 @@
           <span class="location">Burnaby, BC</span>
         </div>
         <ul>
-          <li>Presented SFU Computing Science at recruitment events to 100+ prospective students and supported students exploring the program.</li>
-          <li>Built a Python and Selenium workflow that sent 200 personalized scheduling emails in one day for mentoring sessions.</li>
-          <li>Tutored introductory Python through one-on-one sessions focused on curiosity, experimentation, and problem-solving.</li>
+          <li>Presented SFU Computing Science to 100+ prospective students at recruitment events, answering program questions and sharing the student experience.</li>
+          <li>Automated 200 personalized scheduling emails in one day with Python and Selenium to coordinate mentoring sessions.</li>
+          <li>Tutored introductory Python one-on-one, helping students debug programs and reason through core programming concepts.</li>
         </ul>
       </div>
     </section>
@@ -306,15 +317,15 @@
       <div class="entry">
         <div class="row"><strong>Multimedia Systems Lab | Java</strong><span>2026</span></div>
         <ul>
-          <li>Built WAV parsing and Huffman compression with real bit packing and decoding, alongside image-processing tools for dithering, DCT compression, FFT visualization, and PSNR measurement.</li>
-          <li>Added automated tests for WAV parsing, compression round trips, colour transforms, dithering, DCT output, and Fourier processing.</li>
+          <li>Implemented WAV parsing and lossless Huffman coding with real bit packing and decoding in Java, then added dithering, DCT compression, FFT visualization, and PSNR measurement.</li>
+          <li>Verified algorithm correctness with automated tests covering WAV parsing, compression round trips, colour transforms, dithering, DCT, and Fourier processing.</li>
         </ul>
       </div>
 
       <div class="entry">
         <div class="row"><strong>Processor Pipeline Simulator | C++</strong><span>2024 - Present</span></div>
         <ul>
-          <li>Implemented dependency and control-hazard handling in a configurable five-stage processor pipeline simulator with cycle, stall, and IPC reporting.</li>
+          <li>Implemented dependency and control-hazard handling in a configurable five-stage C++ pipeline simulator, producing cycle, stall, and IPC statistics from instruction traces.</li>
         </ul>
       </div>
     </section>
@@ -329,6 +340,7 @@
         <li>Certifications: AWS Certified AI Practitioner | Amateur Radio Operator Certificate (VE7 OOH)</li>
       </ul>
     </section>
+    </div>
   </main>
 </body>
 </html>
