@@ -27,14 +27,14 @@ export const links = {
   email: 'mailto:ernest_wong@sfu.ca',
   github: 'https://github.com/jumiknows',
   linkedin: 'https://www.linkedin.com/in/jumiknows/',
-  resume: './resume.html',
+  resume: './resume.pdf',
 } as const
 
 export const profile = {
   eyebrow: 'Software engineer / systems, data, and embedded software',
   lead: 'I build production tooling, data pipelines, system integrations, and embedded software.',
   note: 'Most of my work starts with a manual or fragile process and ends with something testable, repeatable, and easier to operate.',
-  current: 'Software Engineering Co-op at Oakmont Industrial and AI Engineer / Data Scientist Co-op at Elections Canada. Computing Science at SFU.',
+  current: 'Software Engineering Co-op at Oakmont Industries Ltd. and AI Engineer / Data Scientist Co-op at Elections Canada. Computing Science at SFU.',
   focusAreas: [
     'Production systems',
     'Data engineering',
@@ -150,13 +150,13 @@ export const projects: Project[] = [
     tools: ['Python', 'scikit-learn', 'Pandas', 'Pytest'],
     system: [
       { label: 'PDF input', detail: 'Extracted document lines' },
-      { label: 'Features', detail: 'Text + layout signals' },
+      { label: 'Features', detail: 'TF-IDF text features' },
       { label: 'Classifier', detail: 'KEEP or DROP' },
       { label: 'Output', detail: 'Cleaner listening copy' },
     ],
     constraint: 'Remove page noise without changing the research',
     ownership: 'Training pipeline, classifier, CLI workflow, tests',
-    verification: '91.2% accuracy and 89.7% KEEP F1',
+    verification: 'Prototype: 91.2% accuracy and 89.7% KEEP F1',
     links: [{ label: 'View code', href: 'https://github.com/jumiknows/CleanListen' }],
   },
   {
@@ -192,7 +192,7 @@ export const projects: Project[] = [
     tab: 'Mission software',
     label: '06 / Embedded + mission',
     organization: 'UBC Orbit + SFU SAT',
-    dates: 'Sep 2023 to Aug 2026',
+    dates: 'Sep 2023 to Sep 2026',
     title: 'ALEASAT Mission Software',
     intro:
       'Spacecraft and high-altitude systems need telemetry and command software that remains useful when hardware is remote and recovery options are limited.',
@@ -226,7 +226,7 @@ export const projects: Project[] = [
 export const otherProjects = [
   {
     title: 'Balloon4 Flight Computer',
-    description: 'Raspberry Pi Zero sensor logging, unattended boot, and team onboarding.',
+    description: 'Raspberry Pi flight computer with fault-isolated sensor workers, health monitoring, reproducible telemetry, simulated hardware tests, and unattended boot.',
     href: 'https://github.com/jumiknows/Balloon4-Flight-Computer',
     action: 'View repository',
   },
@@ -286,7 +286,7 @@ export const skills = {
   eyebrow: 'Technical skills',
   heading: 'Tools I use',
   groups: [
-    { label: 'Languages', value: 'Python, Go, Java, TypeScript, JavaScript, SQL, Bash' },
+    { label: 'Languages', value: 'Python, Go, Java, C#, TypeScript, JavaScript, SQL, Bash' },
     { label: 'Data + APIs', value: 'GraphQL, REST, SOAP, JSON, XML, Denodo, Pandas, Power BI' },
     { label: 'Cloud + DevOps', value: 'AWS, Docker, Kubernetes, OpenShift, Jenkins, Bamboo, Bitbucket' },
     { label: 'Testing + Tools', value: 'Pytest, JUnit, Selenium, Cypress, Postman, Figma, Maven, Poetry' },
