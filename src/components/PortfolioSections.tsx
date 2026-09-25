@@ -66,7 +66,7 @@ export function ContactSection() {
       <div className="contact-links">
         <a href={links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
         <a href={links.github} target="_blank" rel="noreferrer">GitHub</a>
-        <a href={links.resume} download="Ernest_Wong_Resume.pdf">Resume</a>
+        <a href={links.resume}>Resume</a>
       </div>
       <footer><span>Built by Ernest Wong</span><span>{contact.coordinates}</span></footer>
     </section>
