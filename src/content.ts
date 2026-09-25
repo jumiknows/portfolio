@@ -27,7 +27,7 @@ export const links = {
   email: 'mailto:ernest_wong@sfu.ca',
   github: 'https://github.com/jumiknows',
   linkedin: 'https://www.linkedin.com/in/jumiknows/',
-  resume: './resume.pdf',
+  resume: './resume.html',
 } as const
 
 export const profile = {
@@ -286,7 +286,7 @@ export const skills = {
   eyebrow: 'Technical skills',
   heading: 'Tools I use',
   groups: [
-    { label: 'Languages', value: 'Python, Go, Java, C#, TypeScript, JavaScript, SQL, Bash' },
+    { label: 'Languages', value: 'Python, Go, Java, C++, C#, TypeScript, JavaScript, SQL, Bash' },
     { label: 'Data + APIs', value: 'GraphQL, REST, SOAP, JSON, XML, Denodo, Pandas, Power BI' },
     { label: 'Cloud + DevOps', value: 'AWS, Docker, Kubernetes, OpenShift, Jenkins, Bamboo, Bitbucket' },
     { label: 'Testing + Tools', value: 'Pytest, JUnit, Selenium, Cypress, Postman, Figma, Maven, Poetry' },
