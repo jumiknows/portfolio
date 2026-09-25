@@ -2,15 +2,14 @@
 
 Interactive portfolio for Ernest Wong, a software engineer and Computer Science student at Simon Fraser University.
 
-## Projects
+## Featured work
 
-- Production Release Automation at ISED
-- CleanListen, a PDF accessibility and machine learning project
-- ShareGuard, a privacy-preserving browser extension
-- Balloon4 and ALEASAT, embedded and mission software
-- Processor Pipeline Simulator and PDF Audiobook, systems and full-stack work
+- Production release automation at ISED
+- ShareGuard, a local-first browser privacy extension
+- Multimedia Systems Lab, interactive Java tools for audio and image algorithms
+- CleanListen, an accessibility-focused PDF filtering project
 - EAP Reporting Pipeline at Elections Canada
-- ALEASAT Mission Software with UBC Orbit and SFU SAT
+- ALEASAT and Balloon4 mission software with UBC Orbit and SFU SAT
 
 The portfolio focuses on concrete engineering work, technical scope, measurable results, and the systems used to verify each project.
 
@@ -63,3 +62,5 @@ npm run check
 ## Deploy
 
 Pushing to `main` triggers the GitHub Pages workflow.
+
+The published site is available at [jumiknows.github.io/portfolio](https://jumiknows.github.io/portfolio/).
