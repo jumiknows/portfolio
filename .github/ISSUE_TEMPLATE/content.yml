@@ -1,0 +1,17 @@
+name: Content update
+description: Track a project, resume, wording, or evidence update.
+title: "content: "
+body:
+  - type: textarea
+    id: change
+    attributes:
+      label: What needs updating?
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source of truth
+      description: Link the repository, public artifact, or other evidence that supports the update.
+    validations:
+      required: true

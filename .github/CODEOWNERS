@@ -1,0 +1,8 @@
+# Portfolio owner
+* @jumiknows
+
+# Deployment and repository controls
+/.github/ @jumiknows
+/package.json @jumiknows
+/vite.config.ts @jumiknows
+/src/content.ts @jumiknows
