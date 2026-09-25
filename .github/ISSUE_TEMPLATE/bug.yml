@@ -1,0 +1,17 @@
+name: Portfolio bug
+description: Report a broken layout, link, interaction, or deployment issue.
+title: "fix: "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Browser, device, viewport, and steps to reproduce.
+    validations:
+      required: true
