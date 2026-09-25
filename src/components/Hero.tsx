@@ -22,7 +22,7 @@ export function Hero() {
 
         <div className="hero-actions">
           <a className="primary-link" href="#work">View projects</a>
-          <a className="secondary-link" href={links.resume} download="Ernest_Wong_Resume.pdf">Resume</a>
+          <a className="secondary-link" href={links.resume}>Resume</a>
         </div>
 
         <div className="current-note">
