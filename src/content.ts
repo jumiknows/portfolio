@@ -238,7 +238,7 @@ export const otherProjects = [
   },
   {
     title: 'SereniTea UX Prototype',
-    description: 'Team research, prototyping, and usability testing for a peer-support and self-help experience.',
+    description: "Ranked among the class's top three for design and presentation, using team research and usability testing to shape a peer-support experience.",
     href: 'https://www.figma.com/proto/HWzXdHgZrj34OYd2ZN5bR5/CMPT-363-Part-3-Vertical-Prototype-Group-34?node-id=2268-535&starting-point-node-id=2268%3A535&t=DknL9qwTm0QqbhWb-1',
     action: 'Open Figma prototype',
   },

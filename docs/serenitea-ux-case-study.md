@@ -2,7 +2,8 @@
 
 **Course:** SFU CMPT 363, User Interface Design  
 **Term:** Fall 2023  
-**Format:** Team research and interactive prototype
+**Format:** Team research and interactive prototype  
+**Recognition:** Ranked among the class's top three projects for design and presentation
 
 [Open the interactive Figma prototype](https://www.figma.com/proto/HWzXdHgZrj34OYd2ZN5bR5/CMPT-363-Part-3-Vertical-Prototype-Group-34?node-id=2268-535&starting-point-node-id=2268%3A535&t=DknL9qwTm0QqbhWb-1)
 
